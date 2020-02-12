@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+.todo {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto 12fr;
+  grid-template-columns: 12fr;
+  grid-template-areas: "head""cuerpo";
+}
+
+.header {
+  grid-area: head;
+}
+
+.main {
+  grid-area: cuerpo;
+  padding: 20px;
+  font-family: 'Ubuntu',
+    sans-serif;
+  background: #777;
+}
+
+// .footer {
+//   grid-area: pie;
+//   background: #111;
+// }
