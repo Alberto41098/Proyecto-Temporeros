@@ -5,7 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
-const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
+const trabajadoresRoutes_1 = __importDefault(require("./routes/trabajadoresRoutes"));
+const empresasRoutes_1 = __importDefault(require("./routes/empresasRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 class Servidor {
@@ -22,7 +23,8 @@ class Servidor {
     }
     routes() {
         this.app.use(indexRoutes_1.default);
-        this.app.use('/usuarios', usuariosRoutes_1.default);
+        this.app.use('/trabajadores', trabajadoresRoutes_1.default);
+        this.app.use('/empresas', empresasRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

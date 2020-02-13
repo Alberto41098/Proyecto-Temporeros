@@ -17,50 +17,54 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const SECRET_KEY = 'aoa';
 // import * as CryptoJS from 'crypto-js';
-class TabajadoresController {
+class EmpresasController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO trabajadores SET ?', [req.body]);
+            yield database_1.default.query('INSERT INTO empresas SET ?', [req.body]);
         });
     }
     read(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const trabajadores = yield database_1.default.query('SELECT * FROM trabajadores', [req.body]);
-            res.json(trabajadores);
+            const empresas = yield database_1.default.query('SELECT * FROM empresas', [req.body]);
+            res.json(empresas);
         });
     }
+    // public async readprovincia(req: Request, res: Response) {
+    //     const empresas = await pool.query('SELECT * FROM empresas where municipios_id in(select id from municipios where id in(select id from provincias where provincia=? ) )', [req.body.provincia]);
+    //     res.json(empresas);
+    // }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE trabajadores SET ? WHERE id = ?', [id]);
+            yield database_1.default.query('UPDATE empresas SET ? WHERE id = ?', [id]);
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM trabajadores WHERE id = ?', [id]);
+            yield database_1.default.query('DELETE FROM empresas WHERE id = ?', [id]);
         });
     }
     readone(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const trabajador = yield database_1.default.query('SELECT * FROM trabajadores WHERE id = ?', [id]);
-            res.json(trabajador);
+            const empresa = yield database_1.default.query('SELECT * FROM empresas WHERE id = ?', [id]);
+            res.json(empresa);
         });
     }
     readlogin(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, pass } = req.body;
-            const trabajadores = yield database_1.default.query('SELECT * FROM trabajadores WHERE email = ? and pass = ?', [email, pass]);
-            if (trabajadores.length == 0) {
-                res.json({ message: 'No se ha encontrado el trabajador' });
+            const { correo, pass } = req.body;
+            const empresas = yield database_1.default.query('SELECT * FROM empresas WHERE correo = ? and pass = ?', [correo, pass]);
+            if (empresas.length == 0) {
+                res.json({ message: 'No se ha encontrado la empresa' });
             }
             else {
                 // res.json(usuarios)
-                const accessToken = jwt.sign({ id: email }, SECRET_KEY, { expiresIn: 84600 });
+                const accessToken = jwt.sign({ id: correo }, SECRET_KEY, { expiresIn: 84600 });
                 res.json(accessToken);
             }
         });
     }
 }
-exports.trabajadoresController = new TabajadoresController;
+exports.empresasController = new EmpresasController;
