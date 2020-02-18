@@ -29,10 +29,12 @@ class EmpresasController {
             res.json(empresas);
         });
     }
-    // public async readprovincia(req: Request, res: Response) {
-    //     const empresas = await pool.query('SELECT * FROM empresas where municipios_id in(select id from municipios where id in(select id from provincias where provincia=? ) )', [req.body.provincia]);
-    //     res.json(empresas);
-    // }
+    readprovincia(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const empresas = yield database_1.default.query('SELECT * FROM empresas where municipios_id in(select id from municipios where id in(select id from provincias where id=? ) )', [req.body.provincia.id]);
+            res.json(empresas);
+        });
+    }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

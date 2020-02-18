@@ -12,6 +12,7 @@ class EmpresasRoutes {
         this.router.delete('/:id', empresasController.delete);
         this.router.get('/:id', empresasController.readone);
         this.router.post('/login',empresasController.readlogin);
+        this.router.get('/', empresasController.readprovincia);
     }
 }
 const empresasRoutes = new EmpresasRoutes();
