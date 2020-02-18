@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import indexRoutes from './routes/indexRoutes';
-import usuariosRoutes from './routes/usuariosRoutes'
+import trabajadoresRoutes from './routes/trabajadoresRoutes'
+import empresasRoutes from './routes/empresasRoutes'
 import morgan from 'morgan';
 import cors from 'cors';
 
@@ -21,7 +22,8 @@ class Servidor {
     
     routes(): void {
         this.app.use(indexRoutes);
-        this.app.use('/usuarios', usuariosRoutes);
+        this.app.use('/trabajadores', trabajadoresRoutes);
+        this.app.use('/empresas', empresasRoutes);
     }
 
     start(): void {

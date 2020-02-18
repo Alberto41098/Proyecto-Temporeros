@@ -3,7 +3,7 @@ export default {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'dbusuarios',
+        database: 'temporeros',
         port: 3306
     }
 }
