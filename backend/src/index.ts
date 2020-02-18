@@ -3,6 +3,7 @@ import indexRoutes from './routes/indexRoutes';
 import provinciasRoutes from './routes/provinciasRoutes';
 import trabajadoresRoutes from './routes/trabajadoresRoutes';
 import empresasRoutes from './routes/empresasRoutes';
+import ofertasRoutes from './routes/ofertasRoutes';
 import morgan from 'morgan';
 import cors from 'cors';
 
@@ -26,6 +27,7 @@ class Servidor {
         this.app.use('/trabajadores', trabajadoresRoutes);
         this.app.use('/empresas', empresasRoutes);
         this.app.use('/provincias', provinciasRoutes);
+        this.app.use('/ofertas', ofertasRoutes);
     }
 
     start(): void {
