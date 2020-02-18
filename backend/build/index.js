@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
+const provinciasRoutes_1 = __importDefault(require("./routes/provinciasRoutes"));
 const trabajadoresRoutes_1 = __importDefault(require("./routes/trabajadoresRoutes"));
 const empresasRoutes_1 = __importDefault(require("./routes/empresasRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
@@ -25,6 +26,7 @@ class Servidor {
         this.app.use(indexRoutes_1.default);
         this.app.use('/trabajadores', trabajadoresRoutes_1.default);
         this.app.use('/empresas', empresasRoutes_1.default);
+        this.app.use('/provincias', provinciasRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
