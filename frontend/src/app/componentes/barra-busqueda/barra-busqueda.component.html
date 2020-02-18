@@ -1,0 +1,19 @@
+<div class="form-group" id="barra_busqueda" style="color: white;">
+  <div class="row">
+    <div class="col-md-8 col-sm-7 param_busqueda">
+      <div class="form">
+        <input type="text" class="form-control sombreadro" placeholder="¿En qué quieres trabajar?" name="text1" id="form_busqueda"
+          spellcheck="false" autocomplete="off">
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-5 param_busqueda">
+      <select class="form-control sombreadro" id="opciones">
+        <option *ngFor="let prov of provincias" value="{{prov.id}}">{{prov.provincia}}</option>
+      </select>
+    </div>
+    <div class="col-md-2 param_busqueda" style="display: flex; justify-content: center;">
+      <button class="btn btn-primary boton" id="buscar" type="submit">Buscar</button>
+    </div>
+
+  </div>
+</div>
