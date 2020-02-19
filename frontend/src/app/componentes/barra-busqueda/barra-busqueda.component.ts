@@ -15,7 +15,6 @@ export class BarraBusquedaComponent implements OnInit {
     this.provinciasService.getProvincias().subscribe(
       (res) => {
         this.provincias = res;
-        console.log('devuelve prov');
       },
       (err) => {
         console.log(err);

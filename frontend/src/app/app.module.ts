@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './componentes/nav/nav.component';
 import { PortadaMainComponent } from './componentes/portada-main/portada-main.component';
 import { BarraBusquedaComponent } from './componentes/barra-busqueda/barra-busqueda.component';
+import { LoginUsuarioComponent } from './componentes/login-usuario/login-usuario.component';
+import { VistaBusquedaComponent } from './componenetes/vista-busqueda/vista-busqueda.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     PortadaMainComponent,
-    BarraBusquedaComponent
+    BarraBusquedaComponent,
+    LoginUsuarioComponent,
+    VistaBusquedaComponent
   ],
   imports: [
     BrowserModule,

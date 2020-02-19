@@ -15,11 +15,13 @@
 
 .main {
   grid-area: cuerpo;
-  padding: 20px;
   font-family: 'Ubuntu',
     sans-serif;
   background: #e1e1e1;
+// background: rgb(241, 241, 241);
+// background: linear-gradient(0deg, rgba(241, 241, 241, 1) 0%, rgba(193, 193, 193, 1) 100%);
 }
+
 
 // .footer {
 //   grid-area: pie;

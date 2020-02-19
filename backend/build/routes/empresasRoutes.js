@@ -14,7 +14,7 @@ class EmpresasRoutes {
         this.router.delete('/:id', empresasController_1.empresasController.delete);
         this.router.get('/:id', empresasController_1.empresasController.readone);
         this.router.post('/login', empresasController_1.empresasController.readlogin);
-        this.router.get('/', empresasController_1.empresasController.readprovincia);
+        this.router.get('/provincia', empresasController_1.empresasController.readprovincia);
     }
 }
 const empresasRoutes = new EmpresasRoutes();
