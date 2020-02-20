@@ -7,6 +7,7 @@ class ProvinciasRoutes{
     }
     config() {
         this.router.get('/', provinciasController.read);
+        this.router.get('/municipios/:id', provinciasController.readbyprov);
     }
 }
 const provinciasRoutes = new ProvinciasRoutes();

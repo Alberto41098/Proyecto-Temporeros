@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProvinciasService {
+export class MunicipiosService {
 
   constructor(private http: HttpClient) { }
-  getProvincias(): Observable<any> {
-    return this.http.get('http://localhost:3300/provincias');
+  getMunicipios(id: number): Observable<any> {
+    return this.http.get('http://localhost:3300/provincias/municipios/' + id);
   }
 }

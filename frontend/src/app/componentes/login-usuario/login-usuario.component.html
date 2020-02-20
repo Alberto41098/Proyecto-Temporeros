@@ -3,30 +3,22 @@
     <div class="card-header">
       <h3 class="mb-0">Login</h3>
     </div>
-    <div [formGroup]="formLogin" (submit)="submit()">
+    <div>
       <div class="form-group">
         <label for="nombre">Email</label>
         <input type="text" class="form-control paramatro" id="form-nombre" aria-describedby="nombre"
-          placeholder="" formControlName="nombre" autocomplete="off">
-        <div class="form-text text-muted" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-          <small *ngIf="nombre.errors.required">El nombre del usuario es obligatorio</small>
-          <small *ngIf="nombre.errors.minlength">La longitud mínima es de 6 caracteres</small>
-        </div>
+          placeholder="" autocomplete="off">
       </div>
       <div class="form-group">
         <label for="imagen">Contraseña</label>
-        <input type="password" class="form-control paramatro" id="form-imagen" placeholder=""
-          formControlName="imagen" autocomplete="off" aria-describedby="imagen">
-        <div class="form-text text-muted" *ngIf="!imagen.valid && (imagen.dirty || imagen.touched)">
-          <small *ngIf="imagen.errors.pattern">El formato no es correcto, solo letras</small>
-        </div>
+        <input type="password" class="form-control paramatro" id="form-imagen" placeholder="" autocomplete="off" aria-describedby="imagen">
       </div>
         <div class="card-footer" id="footer">
             <div class="texto">
-                <div>¿Aún no tienes cuenta? <a href="">Registrate</a></div>
+                <div>¿Aún no tienes cuenta? <a [routerLink]="['/registrar/usuario']">Registrate</a></div>
             </div>
             <div class="boton">
-              <button type="submit" class="btn btn-primary" [disabled]="!formLogin.valid">Entrar</button>
+              <button type="submit" class="btn btn-primary">Entrar</button>
             </div>
         </div>
     </div>

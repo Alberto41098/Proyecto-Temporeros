@@ -9,7 +9,9 @@ import { NavComponent } from './componentes/nav/nav.component';
 import { PortadaMainComponent } from './componentes/portada-main/portada-main.component';
 import { BarraBusquedaComponent } from './componentes/barra-busqueda/barra-busqueda.component';
 import { LoginUsuarioComponent } from './componentes/login-usuario/login-usuario.component';
-import { VistaBusquedaComponent } from './componenetes/vista-busqueda/vista-busqueda.component';
+import { VistaBusquedaComponent } from './componentes/vista-busqueda/vista-busqueda.component';
+import { RegistrarUsuarioComponent } from './componentes/registrar-usuario/registrar-usuario.component';
+import { RegistrarEmpresaComponent } from './componentes/registrar-empresa/registrar-empresa.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { VistaBusquedaComponent } from './componenetes/vista-busqueda/vista-busq
     PortadaMainComponent,
     BarraBusquedaComponent,
     LoginUsuarioComponent,
-    VistaBusquedaComponent
+    VistaBusquedaComponent,
+    RegistrarUsuarioComponent,
+    RegistrarEmpresaComponent
   ],
   imports: [
     BrowserModule,

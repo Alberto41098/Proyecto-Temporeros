@@ -13,18 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class ProvinciasController {
-    read(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const provincias = yield database_1.default.query('SELECT * FROM provincias ORDER BY provincias.provincia ASC');
-            res.json(provincias);
-        });
-    }
+class MunicipiosController {
     readbyprov(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const municipios = yield database_1.default.query('SELECT municipios.municipio, municipios.id, municipios.provincia_id FROM municipios, provincias WHERE municipios.provincia_id = provincias.id AND municipios.provincia_id = ? ORDER BY municipios.municipio ASC', [req.params.id]);
+            const municipios = yield database_1.default.query('SELECT * FROM municipios, provincias WHERE provincia_id = ? ORDER BY municipios.municipio ASC', [req.params.id]);
             res.json(municipios);
         });
     }
 }
-exports.provinciasController = new ProvinciasController;
+exports.municipiosController = new MunicipiosController;

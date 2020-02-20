@@ -1,0 +1,78 @@
+<div class="todo-registrar-temporero">
+    <div class="form">
+        <div class="div-form">
+          <div class="card-header">
+            <h3 class="mb-0">Crear cuenta</h3>
+          </div>
+          <div [formGroup]="form">
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                  <label for="nombre">Nombre</label>
+                  <input formControlName="nombre" type="text" class="form-control paramatro" id="form-nombre" aria-describedby="nombre"
+                    placeholder="" autocomplete="off">
+                </div>
+                <div class="form-group col-md-7">
+                  <label for="apellidos">Apellidos</label>
+                  <input formControlName="apellidos" type="text" class="form-control paramatro" id="form-apellidos" aria-describedby="apellidos"
+                    placeholder="" autocomplete="off">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="email">Email</label>
+                  <input formControlName="email" type="email" class="form-control paramatro" id="form-email" placeholder=""
+                    autocomplete="off" aria-describedby="email">
+                </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="password">Contraseña</label>
+                <input formControlName="pass" type="password" class="form-control paramatro" id="form-pass" placeholder="" autocomplete="off"
+                  aria-describedby="password">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="password">Repita Contraseña</label>
+                <input formControlName="passrep" type="password" class="form-control paramatro" id="form-pass-repite" placeholder="" autocomplete="off"
+                  aria-describedby="password-repite">
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="tlf">Teléfono</label>
+                    <input formControlName="tel" type="tel" class="form-control paramatro" id="form-tlf" placeholder=""
+                      autocomplete="off" aria-describedby="tlf">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="dni">DNI</label>
+                  <input formControlName="dni" type="text" class="form-control paramatro" id="form-dni" placeholder="" autocomplete="off"
+                    aria-describedby="dni">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="prov">Provincia</label>
+                  <select formControlName="prov" class="custom-select paramatro-sel" id="provincia"
+                    (change)="changeMunicipio()">
+                    <option selected value="0">Seleccione Provincia</option>
+                    <option *ngFor="let prov of provincias" value="{{prov.id}}">
+                      {{prov.provincia}}</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="mun">Municipio</label>
+                  <select formControlName="muni" class="custom-select paramatro-sel" id="municipio">
+                    <option selected value="0">Seleccione Municipio</option>
+                    <option *ngFor="let muni of municipios" value="{{muni.id}}">
+                      {{muni.municipio}}</option>
+                  </select>
+                </div>
+            </div>
+            <div class="card-footer" id="footer">
+              <div class="boton">
+                <button type="submit" class="btn btn-primary col-md-12">¡Listo!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
