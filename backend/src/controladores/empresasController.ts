@@ -6,7 +6,9 @@ const SECRET_KEY = 'aoa';
 // import * as CryptoJS from 'crypto-js';
 class EmpresasController {
     public async create(req: Request, res: Response) {
-        await pool.query('INSERT INTO empresas SET ?', [req.body]);
+        const miusuario=req.body;
+        miusuario.pass=bcrypt.hashSync(req.body.pass);
+        await pool.query('INSERT INTO empresas SET ?', [miusuario]);
     }
     public async read(req: Request, res: Response) {
         const empresas = await pool.query('SELECT * FROM empresas', [req.body]);
@@ -27,18 +29,23 @@ class EmpresasController {
     public async readone(req: Request, res: Response) { 
         const { id } = req.params;
         const empresa = await pool.query('SELECT * FROM empresas WHERE id = ?', [id]);
-        res.json(empresa)
+        res.json(empresa);
     }
     public async readlogin(req: Request, res: Response) { 
-        const { correo, pass } = req.body;
-        const empresas = await pool.query('SELECT * FROM empresas WHERE correo = ? and pass = ?', [correo, pass]);
-        if (empresas.length == 0) {
+
+        const empresas = await pool.query('SELECT * FROM empresas WHERE correo = ? ', [req.body.correo]);
+         if (empresas.length == 0) {
             res.json({message: 'No se ha encontrado la empresa'});
         } else {
-            // res.json(usuarios)
-            const accessToken = jwt.sign({ id: correo }, SECRET_KEY, {expiresIn: 84600});
+            if( bcrypt.compareSync(req.body.pass, empresas[0].pass) ){
+                console.log(bcrypt.compareSync(req.body.pass, empresas[0].pass));
+            const accessToken = jwt.sign({ id: req.body.correo }, SECRET_KEY, {expiresIn: 84600});
             res.json(accessToken);
+        }else{
+                 res.json({message: 'La contraseña es erronea'});
+             }
         }
+    
     }
 }
 export const empresasController = new EmpresasController;

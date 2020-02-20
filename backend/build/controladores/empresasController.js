@@ -20,7 +20,9 @@ const SECRET_KEY = 'aoa';
 class EmpresasController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO empresas SET ?', [req.body]);
+            const miusuario = req.body;
+            miusuario.pass = bcrypt.hashSync(req.body.pass);
+            yield database_1.default.query('INSERT INTO empresas SET ?', [miusuario]);
         });
     }
     read(req, res) {
@@ -56,15 +58,19 @@ class EmpresasController {
     }
     readlogin(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { correo, pass } = req.body;
-            const empresas = yield database_1.default.query('SELECT * FROM empresas WHERE correo = ? and pass = ?', [correo, pass]);
+            const empresas = yield database_1.default.query('SELECT * FROM empresas WHERE correo = ? ', [req.body.correo]);
             if (empresas.length == 0) {
                 res.json({ message: 'No se ha encontrado la empresa' });
             }
             else {
-                // res.json(usuarios)
-                const accessToken = jwt.sign({ id: correo }, SECRET_KEY, { expiresIn: 84600 });
-                res.json(accessToken);
+                if (bcrypt.compareSync(req.body.pass, empresas[0].pass)) {
+                    console.log(bcrypt.compareSync(req.body.pass, empresas[0].pass));
+                    const accessToken = jwt.sign({ id: req.body.correo }, SECRET_KEY, { expiresIn: 84600 });
+                    res.json(accessToken);
+                }
+                else {
+                    res.json({ message: 'La contraseña es erronea' });
+                }
             }
         });
     }
