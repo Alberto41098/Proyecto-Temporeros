@@ -1,0 +1,26 @@
+<div class="todo-form">
+  <div class="div-form">
+    <div class="card-header">
+      <h3 class="mb-0">Login</h3>
+    </div>
+    <div>
+      <div class="form-group">
+        <label for="nombre">Email</label>
+        <input type="text" class="form-control paramatro" id="form-nombre" aria-describedby="nombre"
+          placeholder="" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="imagen">Contraseña</label>
+        <input type="password" class="form-control paramatro" id="form-imagen" placeholder="" autocomplete="off" aria-describedby="imagen">
+      </div>
+        <div class="card-footer" id="footer">
+            <div class="texto">
+                <div>¿Aún no tienes cuenta? <a [routerLink]="['/registrar/usuario']">Registrate</a></div>
+            </div>
+            <div class="boton">
+              <button type="submit" class="btn btn-primary">Entrar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

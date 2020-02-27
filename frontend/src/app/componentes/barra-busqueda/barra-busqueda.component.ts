@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PronvinciasService } from '../../servicios/provincias.service';
+import { ProvinciasService } from '../../servicios/provincias.service';
 import { Provincia } from '../../modelos/provincia';
 
 @Component({
@@ -9,13 +9,12 @@ import { Provincia } from '../../modelos/provincia';
 })
 export class BarraBusquedaComponent implements OnInit {
 
-  constructor(private provinciasService: PronvinciasService) { }
+  constructor(private provinciasService: ProvinciasService) { }
   private provincias: Provincia;
   ngOnInit() {
     this.provinciasService.getProvincias().subscribe(
       (res) => {
         this.provincias = res;
-        console.log('devuelve prov');
       },
       (err) => {
         console.log(err);

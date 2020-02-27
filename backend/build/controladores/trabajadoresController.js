@@ -56,7 +56,6 @@ class TabajadoresController {
                 res.json({ message: 'No se ha encontrado el trabajador' });
             }
             else {
-                // res.json(usuarios)
                 const accessToken = jwt.sign({ id: email }, SECRET_KEY, { expiresIn: 84600 });
                 res.json(accessToken);
             }

@@ -8,6 +8,7 @@
 body {
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -20,6 +21,16 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #dfdfdf;
+  // background-color: #dfdfdf;
+  background: #666;
   border-radius: 10px;
+}
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
