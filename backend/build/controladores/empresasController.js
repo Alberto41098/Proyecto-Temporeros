@@ -21,14 +21,8 @@ const salt = bcrypt.genSaltSync(10);
 class EmpresasController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-<<<<<<< HEAD
-            const miusuario = req.body;
-            miusuario.pass = bcrypt.hashSync(req.body.pass);
-            yield database_1.default.query('INSERT INTO empresas SET ?', [miusuario]);
-=======
             req.body.pass = bcrypt.hashSync(req.body.pass, salt);
             yield database_1.default.query('INSERT INTO empresas SET ?', [req.body]);
->>>>>>> c4d447b80e9c39ec8b58e0ad3f8aeb985f5608b1
         });
     }
     read(req, res) {
