@@ -4,8 +4,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const SECRET_KEY = 'aoa';
 // import * as CryptoJS from 'crypto-js';
+const salt = bcrypt.genSaltSync(10);
 class EmpresasController {
     public async create(req: Request, res: Response) {
+        req.body.pass = bcrypt.hashSync(req.body.pass, salt);
         await pool.query('INSERT INTO empresas SET ?', [req.body]);
     }
     public async read(req: Request, res: Response) {
@@ -27,6 +29,16 @@ class EmpresasController {
     public async readone(req: Request, res: Response) { 
         const { id } = req.params;
         const empresa = await pool.query('SELECT * FROM empresas WHERE id = ?', [id]);
+        res.json(empresa)
+    }
+    public async readnif(req: Request, res: Response) { 
+        const { nif } = req.params;
+        const empresa = await pool.query('SELECT cifnif FROM empresas WHERE cifnif = ?', [nif]);
+        res.json(empresa)
+    }
+    public async reademail(req: Request, res: Response) { 
+        const { email } = req.params;
+        const empresa = await pool.query('SELECT email FROM empresas WHERE email = ?', [email]);
         res.json(empresa)
     }
     public async readlogin(req: Request, res: Response) { 

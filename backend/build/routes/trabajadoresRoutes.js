@@ -14,6 +14,8 @@ class TrabajadoresRoutes {
         this.router.delete('/:id', trabajadoresController_1.trabajadoresController.delete);
         this.router.get('/:id', trabajadoresController_1.trabajadoresController.readone);
         this.router.post('/login', trabajadoresController_1.trabajadoresController.readlogin);
+        this.router.get('/email/:email', trabajadoresController_1.trabajadoresController.reademail);
+        this.router.get('/dni/:dni', trabajadoresController_1.trabajadoresController.readdni);
     }
 }
 const trabajadoresRoutes = new TrabajadoresRoutes();

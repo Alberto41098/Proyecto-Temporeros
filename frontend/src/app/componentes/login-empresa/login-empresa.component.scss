@@ -1,14 +1,18 @@
-.todo-registrar-temporero {
+.todo-form {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   animation-name: aparecer;
   animation-duration: 0.5s;
 }
 
-.form {
+.paramatro {
+  min-width: 350px;
+}
+
+.div-form {
   padding: 20px;
   background: #F8F9FA;
   border-radius: 20px;
@@ -18,8 +22,11 @@
     0 5.4px 17.9px rgba(0, 0, 0, 0.042),
     0 10px 33.4px rgba(0, 0, 0, 0.05),
     0 24px 80px rgba(0, 0, 0, 0.07);
-  max-width: 760px;
-  height: auto;
+}
+
+.boton {
+  margin-left: 10px;
+  text-align: right;
 }
 
 .card-header {
@@ -28,41 +35,16 @@
   padding-left: 0;
 }
 
+.texto {
+  display: flex;
+  align-items: center;
+}
+
 #footer {
   margin-top: 20px;
   background: #F8F9FA;
   padding-right: 0;
   padding-left: 0;
-}
-
-.boton {
-  text-align: right;
-}
-
-.paramatro-sel {
-  min-width: 300px !important;
-}
-
-option {
-  max-width: 300px !important;
-}
-
-
-.error {
-  animation: crecer .2s ease-in-out;
-  height: 24px;
-  color: #DC3545;
-}
-
-
-@keyframes crecer {
-  from {
-    opacity: 0;
-    height: 0;
-  }
-
-  to {
-    opacity: 1;
-    height: 24px;
-  }
+  display: flex;
+  justify-content: space-between;
 }

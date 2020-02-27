@@ -1,5 +1,4 @@
 import express, { Application } from 'express';
-import indexRoutes from './routes/indexRoutes';
 import provinciasRoutes from './routes/provinciasRoutes';
 import trabajadoresRoutes from './routes/trabajadoresRoutes';
 import empresasRoutes from './routes/empresasRoutes';
@@ -23,7 +22,6 @@ class Servidor {
     }
     
     routes(): void {
-        this.app.use(indexRoutes);
         this.app.use('/trabajadores', trabajadoresRoutes);
         this.app.use('/empresas', empresasRoutes);
         this.app.use('/provincias', provinciasRoutes);
