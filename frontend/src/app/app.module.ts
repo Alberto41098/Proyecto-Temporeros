@@ -12,6 +12,8 @@ import { LoginUsuarioComponent } from './componentes/login-usuario/login-usuario
 import { VistaBusquedaComponent } from './componentes/vista-busqueda/vista-busqueda.component';
 import { RegistrarUsuarioComponent } from './componentes/registrar-usuario/registrar-usuario.component';
 import { RegistrarEmpresaComponent } from './componentes/registrar-empresa/registrar-empresa.component';
+import { LoadingComponent } from './componentes/loading/loading.component';
+import { LoginEmpresaComponent } from './componentes/login-empresa/login-empresa.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { RegistrarEmpresaComponent } from './componentes/registrar-empresa/regis
     LoginUsuarioComponent,
     VistaBusquedaComponent,
     RegistrarUsuarioComponent,
-    RegistrarEmpresaComponent
+    RegistrarEmpresaComponent,
+    LoadingComponent,
+    LoginEmpresaComponent,
   ],
   imports: [
     BrowserModule,

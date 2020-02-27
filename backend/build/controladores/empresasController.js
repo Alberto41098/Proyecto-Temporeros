@@ -17,12 +17,18 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const SECRET_KEY = 'aoa';
 // import * as CryptoJS from 'crypto-js';
+const salt = bcrypt.genSaltSync(10);
 class EmpresasController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+<<<<<<< HEAD
             const miusuario = req.body;
             miusuario.pass = bcrypt.hashSync(req.body.pass);
             yield database_1.default.query('INSERT INTO empresas SET ?', [miusuario]);
+=======
+            req.body.pass = bcrypt.hashSync(req.body.pass, salt);
+            yield database_1.default.query('INSERT INTO empresas SET ?', [req.body]);
+>>>>>>> c4d447b80e9c39ec8b58e0ad3f8aeb985f5608b1
         });
     }
     read(req, res) {
@@ -53,6 +59,20 @@ class EmpresasController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const empresa = yield database_1.default.query('SELECT * FROM empresas WHERE id = ?', [id]);
+            res.json(empresa);
+        });
+    }
+    readnif(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { nif } = req.params;
+            const empresa = yield database_1.default.query('SELECT cifnif FROM empresas WHERE cifnif = ?', [nif]);
+            res.json(empresa);
+        });
+    }
+    reademail(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { email } = req.params;
+            const empresa = yield database_1.default.query('SELECT email FROM empresas WHERE email = ?', [email]);
             res.json(empresa);
         });
     }

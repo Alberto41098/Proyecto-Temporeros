@@ -5,6 +5,7 @@ import { LoginUsuarioComponent } from './componentes/login-usuario/login-usuario
 import { VistaBusquedaComponent } from './componentes/vista-busqueda/vista-busqueda.component';
 import { RegistrarUsuarioComponent } from './componentes/registrar-usuario/registrar-usuario.component';
 import { RegistrarEmpresaComponent } from './componentes/registrar-empresa/registrar-empresa.component';
+import { LoginEmpresaComponent } from './componentes/login-empresa/login-empresa.component';
 
 
 const routes: Routes = [
@@ -18,8 +19,12 @@ const routes: Routes = [
     component: PortadaMainComponent
   },
   {
-    path: 'login',
+    path: 'login/usuario',
     component: LoginUsuarioComponent
+  },
+  {
+    path: 'login/empresa',
+    component: LoginEmpresaComponent
   },
   {
     path: 'search',

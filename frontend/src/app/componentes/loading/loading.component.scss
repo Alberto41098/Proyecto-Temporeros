@@ -1,0 +1,9 @@
+.loading{
+    height: 100px;
+    width: 100px;
+    background: url("../../../assets/img/loading.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation-name: aparecer;
+    animation-duration: 0.5s;
+}

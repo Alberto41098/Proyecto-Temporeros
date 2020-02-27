@@ -5,6 +5,7 @@ export interface Temporero {
     apellidos?: string;
     email?: string;
     pass?: string;
+    telefono?: number;
     curriculum?: string;
     municipio_id?: number;
     user_session_token?: string;
