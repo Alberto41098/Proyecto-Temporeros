@@ -21,7 +21,7 @@ export class LoginUsuarioComponent implements OnInit {
 
   ngOnInit() {
   }
-
+// ya devuelve el token, queda controlar los fallos de login y guardarlo en local storage
   submit() {
     this.trabajadoresService.getLogin({
       email: this.email.value,

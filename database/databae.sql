@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-02-2020 a las 19:52:49
--- Versión del servidor: 10.4.11-MariaDB
+-- Tiempo de generación: 28-02-2020 a las 19:18:43
+-- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `temporeros`
 --
+CREATE DATABASE IF NOT EXISTS temporeros;
+USE temporeros;
 
 -- --------------------------------------------------------
 
@@ -69,19 +71,21 @@ CREATE TABLE `empresas` (
   `id_empresa` int(11) NOT NULL,
   `cifnif` varchar(45) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
-  `correo` varchar(150) DEFAULT NULL,
-  `pass` varchar(200) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `pass` varchar(45) DEFAULT NULL,
   `logo` varchar(150) DEFAULT NULL,
-  `municipios_id` int(10) UNSIGNED NOT NULL
+  `municipios_id` int(10) UNSIGNED NOT NULL,
+  `user_session_token` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `empresas`
 --
 
-INSERT INTO `empresas` (`id_empresa`, `cifnif`, `nombre`, `correo`, `pass`, `logo`, `municipios_id`) VALUES
-(1, '99999999999', 'Juan SL', 'Juan@gmail.com', '1234', '1.jpg', 1943),
-(2, '99999999998', 'Juan SA', 'Juan@gmail.es', '1234', '2.jpg', 7388);
+INSERT INTO `empresas` (`id_empresa`, `cifnif`, `nombre`, `email`, `pass`, `logo`, `municipios_id`, `user_session_token`) VALUES
+(1, 'a12312321', 'Empresa de alberto', 'a@gmail.com', '$2a$10$D1RbQElVburIzqYZqa89PeeiqZG4ydHoqcuxaD', NULL, 6852, NULL),
+(2, 'a12312312', 'Jaja', 'alberto@gmail.com', '$2a$10$eE.e/cTHevUY9dltV403bOfIwyTXdHAHWq0bhT', NULL, 6852, NULL),
+(3, 'b12312312', 'pruebafinal', 'alberto@gmail.es', '$2a$10$dqOSCH/p/uKK0IdbRZAyKOawB4f7QV6gQUczp3', NULL, 6852, NULL);
 
 -- --------------------------------------------------------
 
@@ -2047,7 +2051,7 @@ INSERT INTO `municipios` (`municipio`, `id`, `slug`, `latitud`, `longitud`, `pro
 ('Viver', 1940, 'viver', 39.9213506, -0.5944216, 12),
 ('Zorita del Maestrazgo', 1941, 'zorita-del-maestrazgo', 40.7286641, -0.1646943, 12),
 ('Zucaina', 1942, 'zucaina', 40.1316453, -0.4206683, 12),
-('Abenjar', 1943, 'abenjar', 38.8793473, -4.3577781, 13),
+('Abenójar', 1943, 'abenjar', 38.8793473, -4.3577781, 13),
 ('Agudo', 1944, 'agudo', 38.9789683, -4.8731516, 13),
 ('Alamillo', 1945, 'alamillo', 38.6769448, -4.7895922, 13),
 ('Albaladejo', 1946, 'albaladejo', 38.6180528, -2.8062605, 13),
@@ -8242,9 +8246,7 @@ CREATE TABLE `ofertas` (
   `vacantes` int(11) DEFAULT NULL,
   `municipio_id` int(10) UNSIGNED NOT NULL,
   `recogida_id` int(10) UNSIGNED NOT NULL,
-  `empresa_id` int(11) NOT NULL,
-  `titulo` varchar(100) DEFAULT NULL,
-  `descripcion` varchar(250) DEFAULT NULL
+  `empresa_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8326,7 +8328,8 @@ INSERT INTO `provincias` (`id`, `slug`, `provincia`, `comunidad_id`) VALUES
 
 CREATE TABLE `recogidas` (
   `id_recogida` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL
+  `nombre` varchar(45) DEFAULT NULL,
+  `temporada_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8346,6 +8349,17 @@ CREATE TABLE `solicitudes` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `temporadas`
+--
+
+CREATE TABLE `temporadas` (
+  `id_tempora` int(11) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `trabajadores`
 --
 
@@ -8355,11 +8369,22 @@ CREATE TABLE `trabajadores` (
   `nombre` varchar(45) DEFAULT NULL,
   `apellidos` varchar(150) DEFAULT NULL,
   `email` varchar(150) DEFAULT NULL,
-  `pass` varchar(200) DEFAULT NULL,
+  `pass` varchar(150) DEFAULT NULL,
+  `telefono` int(9) DEFAULT NULL,
   `curriculum` varchar(150) DEFAULT NULL,
   `municipio_id` int(10) UNSIGNED NOT NULL,
   `user_session_token` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `trabajadores`
+--
+
+INSERT INTO `trabajadores` (`id_trabajador`, `DNI`, `nombre`, `apellidos`, `email`, `pass`, `telefono`, `curriculum`, `municipio_id`, `user_session_token`) VALUES
+(9, '12312312A', 'Alberto', 'Ortega Avila', 'alberto@gmail.com', '$2a$10$IsD/SdRimIZru/6GmMjAyuDGzk24lms/31sBftdydPv4VIbKVs4xq', 123123123, NULL, 6852, NULL),
+(14, '12312312B', 'prueba', 'jaja', 'alberto@yahoo.com', '$2a$10$tTOV2uvO209SlL7xQITsZuc6AD0hpPZD6S5T3mH7KPcp8n2TFjwLy', 123123123, NULL, 4973, NULL),
+(15, '11111111A', 'a', 'a', 'a@gmail.com', '$2a$10$b/zKP8a668kungPFAAegpuujUj028qZ4zm8l2cS5gHk5qVSc2Phv.', 111111111, NULL, 6852, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFAZ21haWwuY29tIiwiaWF0IjoxNTgyODI1MzgyLCJleHAiOjE1ODI5MDk5ODJ9.pog7W01lY57LqgVvWAwSaD-208SOMpcFBJtc_yWwBBg'),
+(16, '12312312N', 'Isabel', 'Caballero', 'isabel@gmail.com', '$2a$10$qhTWPbzLnxQBWINaTjGFGuH0pBSYZpE/gFa5IYrfy2fYvTheKBxkm', 123123123, NULL, 6800, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImlzYWJlbEBnbWFpbC5jb20iLCJpYXQiOjE1ODI4ODczMjYsImV4cCI6MTU4Mjk3MTkyNn0.WPwbgNnG4in0Vgifp2xATI9U4edd5ckFp0IoaOXfLfU');
 
 --
 -- Índices para tablas volcadas
@@ -8411,8 +8436,9 @@ ALTER TABLE `provincias`
 -- Indices de la tabla `recogidas`
 --
 ALTER TABLE `recogidas`
-  ADD PRIMARY KEY (`id_recogida`) USING BTREE,
-  ADD UNIQUE KEY `idrecogidas_UNIQUE` (`id_recogida`);
+  ADD PRIMARY KEY (`id_recogida`,`temporada_id`),
+  ADD UNIQUE KEY `idrecogidas_UNIQUE` (`id_recogida`),
+  ADD KEY `fk_recogidas_temporadas1_idx` (`temporada_id`);
 
 --
 -- Indices de la tabla `solicitudes`
@@ -8422,6 +8448,13 @@ ALTER TABLE `solicitudes`
   ADD UNIQUE KEY `id_solicitud_UNIQUE` (`id_solicitud`),
   ADD KEY `fk_solicitudes_trabajadores1_idx` (`trabajador_id`),
   ADD KEY `fk_solicitudes_ofertas1_idx` (`oferta_id`);
+
+--
+-- Indices de la tabla `temporadas`
+--
+ALTER TABLE `temporadas`
+  ADD PRIMARY KEY (`id_tempora`),
+  ADD UNIQUE KEY `id_tempora_UNIQUE` (`id_tempora`);
 
 --
 -- Indices de la tabla `trabajadores`
@@ -8452,7 +8485,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
-  MODIFY `id_oferta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_oferta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `provincias`
@@ -8473,10 +8506,16 @@ ALTER TABLE `solicitudes`
   MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `temporadas`
+--
+ALTER TABLE `temporadas`
+  MODIFY `id_tempora` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `trabajadores`
 --
 ALTER TABLE `trabajadores`
-  MODIFY `id_trabajador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_trabajador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
