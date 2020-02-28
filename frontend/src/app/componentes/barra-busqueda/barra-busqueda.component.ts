@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProvinciasService } from '../../servicios/provincias.service';
 import { Provincia } from '../../modelos/provincia';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { OfertasService } from 'src/app/servicios/ofertas.service';
 
 @Component({
   selector: 'app-barra-busqueda',
@@ -8,8 +10,14 @@ import { Provincia } from '../../modelos/provincia';
   styleUrls: ['./barra-busqueda.component.scss']
 })
 export class BarraBusquedaComponent implements OnInit {
-
-  constructor(private provinciasService: ProvinciasService) { }
+  public formBusqueda: FormGroup;
+  constructor(private provinciasService: ProvinciasService, private form: FormBuilder,
+              private ofertasService: OfertasService) {
+    this.formBusqueda = form.group({
+      texto: [''],
+      prov: ['']
+    });
+    }
   private provincias: Provincia;
   ngOnInit() {
     this.provinciasService.getProvincias().subscribe(
@@ -21,5 +29,12 @@ export class BarraBusquedaComponent implements OnInit {
       }
     );
   }
-
+  submit() {
+    this.ofertasService.busquedaBarra({
+      titulo: this.titulo.value,
+      
+    });
+  }
+  get titulo() { return this.formBusqueda.get('texto'); }
+  get prov() { return this.formBusqueda.get('prov'); }
 }
