@@ -27,7 +27,7 @@ class OfertasController {
     }
     readofertasbuscador(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const ofertas = yield database_1.default.query('SELECT * FROM ofertas where municipios_id in(select id from municipios where id in(select id from provincias where id=? ) ) and titulo like %?%', [req.params.provincia, req.params.titulo]);
+            const ofertas = yield database_1.default.query('SELECT * FROM ofertas where municipios_id in(select id from municipios where id in(select id from provincias where id=? ) ) and titulo like %?%', [req.body.provincia.id, req.body.titulo]);
             res.json(ofertas);
         });
     }

@@ -72,19 +72,28 @@ class EmpresasController {
     }
     readlogin(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const empresas = yield database_1.default.query('SELECT * FROM empresas WHERE correo = ? ', [req.body.correo]);
+            const { email, pass } = req.body;
+            const empresas = yield database_1.default.query('SELECT * FROM empresas WHERE email = ?', [email]);
             if (empresas.length == 0) {
-                res.json({ message: 'No se ha encontrado la empresa' });
+                res.json({ message: 'no se encontro' });
             }
             else {
-                if (bcrypt.compareSync(req.body.pass, empresas[0].pass)) {
-                    console.log(bcrypt.compareSync(req.body.pass, empresas[0].pass));
-                    const accessToken = jwt.sign({ id: req.body.correo }, SECRET_KEY, { expiresIn: 84600 });
-                    res.json(accessToken);
-                }
-                else {
-                    res.json({ message: 'La contraseña es erronea' });
-                }
+                bcrypt.compare(pass, empresas[0].pass, (err, result) => {
+                    if (result) {
+                        let accessToken = '';
+                        if (empresas[0].user_session_token == null) {
+                            accessToken = jwt.sign({ id: email }, SECRET_KEY, { expiresIn: 84600 });
+                            database_1.default.query('UPDATE empresas set user_session_token = ? where id_empresa = ?', [accessToken, empresas[0].id_empresa]);
+                        }
+                        else {
+                            accessToken = empresas[0].user_session_token;
+                        }
+                        res.json(accessToken);
+                    }
+                    else {
+                        res.json({ mes: 'usuario y contraseña incorrecta' });
+                    }
+                });
             }
         });
     }
