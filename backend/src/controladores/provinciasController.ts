@@ -6,7 +6,7 @@ class ProvinciasController{
         res.json(provincias);
     }
     public async readbyprov(req: Request, res: Response) {
-        const municipios = await pool.query('SELECT municipios.municipio, municipios.id, municipios.provincia_id FROM municipios, provincias WHERE municipios.provincia_id = provincias.id AND municipios.provincia_id = ? ORDER BY municipios.municipio ASC', [req.params.id]);
+        const municipios = await pool.query('SELECT municipio,id, provincia_id FROM municipios WHERE provincia_id in(select id from provincias ) AND provincia_id = ? ORDER BY municipio ASC', [req.params.id]);
         res.json(municipios);
     }
 }
