@@ -30,10 +30,9 @@ export class BarraBusquedaComponent implements OnInit {
     );
   }
   submit() {
-    this.ofertasService.busquedaBarra({
-      titulo: this.titulo.value,
-      
-    });
+    this.ofertasService.busquedaBarra(this.prov.value, this.titulo.value).subscribe(
+      (res) => console.log(res)
+    );
   }
   get titulo() { return this.formBusqueda.get('texto'); }
   get prov() { return this.formBusqueda.get('prov'); }

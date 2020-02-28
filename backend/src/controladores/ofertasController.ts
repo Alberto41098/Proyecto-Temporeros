@@ -9,7 +9,7 @@ class OfertasController{
         res.json(ofertas);
     }
     public async readofertasbuscador(req: Request, res: Response) {       
-        const ofertas = await pool.query('SELECT * FROM ofertas where municipios_id in(select id from municipios where id in(select id from provincias where id=%?% ) ) and titulo like ?', [req.params.provincia,req.params.titulo]);
+        const ofertas = await pool.query('SELECT * FROM ofertas where municipios_id in(select id from municipios where id in(select id from provincias where id=? ) ) and titulo like %?%', [req.params.provincia,req.params.titulo]);
         res.json(ofertas);
      }
 }

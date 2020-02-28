@@ -8,7 +8,7 @@ class OfertasRoutes{
     config() {
         this.router.post('/', ofertasController.create);
         this.router.get('/', ofertasController.read);
-        this.router.post('/busqueda', ofertasController.readofertasbuscador);
+        this.router.post('/busqueda/:provincia/:titulo', ofertasController.readofertasbuscador);
     }
 }
 const ofertasRoutes = new OfertasRoutes();
