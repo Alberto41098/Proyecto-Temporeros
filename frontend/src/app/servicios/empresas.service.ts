@@ -17,4 +17,7 @@ export class EmpresasService {
   comprobarEmail(email: string) {
     return this.http.get('http://localhost:3300/empresas/email/' + email);
   }
+  getLogin(empresa: Empresa) {
+    return this.http.post('http://localhost:3300/empresas/', empresa);
+  }
 }
