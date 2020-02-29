@@ -1,0 +1,8 @@
+- crear usuario y empresa funcionando
+- login de usuario comprueba correctamente y crea token y lo guarda en base de datos si no existe, queda almacenarlo en local
+- mirar el guardián para la pagina de perfil, Sin empezar ambas
+- login de empresa empezado, cambiar backend
+- barra de búsqueda empezada, esta hecho el formulario, hay que tocar el backend
+- BASE DE DATOS
+        - Añadir campo provincia a oferta para hacer mas fácil la búsqueda
+        - Añadir campo título y descripción a oferta
