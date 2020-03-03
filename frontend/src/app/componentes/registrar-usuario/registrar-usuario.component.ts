@@ -6,7 +6,6 @@ import { Municipio } from '../../modelos/municipios';
 import { MunicipiosService } from '../../servicios/municipios.service';
 import { TrabajadoresService } from '../../servicios/trabajadores.service';
 import { Router } from '@angular/router';
-import { checkEmail } from '../../utils/validators';
 @Component({
   selector: 'app-registrar-usuario',
   templateUrl: './registrar-usuario.component.html',

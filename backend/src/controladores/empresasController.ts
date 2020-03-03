@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const SECRET_KEY = 'aoa';
 // import * as CryptoJS from 'crypto-js';
-const salt = bcrypt.genSaltSync(10);
+const salt = bcrypt.genSaltSync(5);
 class EmpresasController {
     public async create(req: Request, res: Response) {
         req.body.pass = bcrypt.hashSync(req.body.pass, salt);
