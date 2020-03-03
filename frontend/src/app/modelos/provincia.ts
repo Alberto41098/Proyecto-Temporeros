@@ -3,4 +3,5 @@ export interface Provincia {
     id?: number;
     slug?: string;
     comunidad_id?: number;
+    
 }
