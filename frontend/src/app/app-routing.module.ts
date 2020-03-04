@@ -8,6 +8,7 @@ import { RegistrarEmpresaComponent } from './componentes/registrar-empresa/regis
 import { LoginEmpresaComponent } from './componentes/login-empresa/login-empresa.component';
 import { PrivComponent } from './componentes/priv/priv.component';
 import { GAuthTrabajadorGuard } from './auth/g-auth-trabajador.guard';
+import { GAuthEmpresaGuard} from './auth/g-auth-empresa.guard';
 
 const routes: Routes = [
   {
@@ -42,7 +43,7 @@ const routes: Routes = [
   {
     path: 'priv',
     component: PrivComponent,
-    canActivate: [GAuthTrabajadorGuard]
+    canActivate: [GAuthTrabajadorGuard, GAuthEmpresaGuard]
   }
 ];
 

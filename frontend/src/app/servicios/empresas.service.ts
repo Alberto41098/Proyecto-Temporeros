@@ -20,4 +20,13 @@ export class EmpresasService {
   getLogin(empresa: Empresa) {
     return this.http.post('http://localhost:3300/empresas/login', empresa);
   }
+  ifLogin(): boolean {
+    return !!localStorage.getItem('token');
+    }
+    logOut() {
+      localStorage.removeItem('token');
+    }
+    getToken() {
+      return localStorage.getItem('token');
+    }
 }

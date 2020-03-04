@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 export class GAuthTrabajadorGuard implements CanActivate {
   constructor(private trabajadoresService: TrabajadoresService,
               private router: Router) { }
-  canActivate(): boolean{
+  canActivate(): boolean {
     if (this.trabajadoresService.ifLogin()) {
       return true;
     } else {

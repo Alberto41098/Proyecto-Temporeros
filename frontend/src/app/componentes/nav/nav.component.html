@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       </ul>
-      <ng-container *ngIf="trabajadoresService.ifLogin() else logedOut">
+      <ng-container *ngIf="(trabajadoresService.ifLogin() || empresasService.ifLogin()) else logedOut">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/portada']" (click)="trabajadoresService.logOut()">Cerrar sesión</a>
