@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const SECRET_KEY = 'aoa';
+const SECRET_KEY = 'mab';
 // import * as CryptoJS from 'crypto-js';
 const salt = bcrypt.genSaltSync(10);
 class TabajadoresController {

@@ -6,7 +6,8 @@ import { VistaBusquedaComponent } from './componentes/vista-busqueda/vista-busqu
 import { RegistrarUsuarioComponent } from './componentes/registrar-usuario/registrar-usuario.component';
 import { RegistrarEmpresaComponent } from './componentes/registrar-empresa/registrar-empresa.component';
 import { LoginEmpresaComponent } from './componentes/login-empresa/login-empresa.component';
-
+import { PrivComponent } from './componentes/priv/priv.component';
+import { GAuthTrabajadorGuard } from './auth/g-auth-trabajador.guard';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'registrar/empresa',
     component: RegistrarEmpresaComponent
+  },
+  {
+    path: 'priv',
+    component: PrivComponent,
+    canActivate: [GAuthTrabajadorGuard]
   }
 ];
 

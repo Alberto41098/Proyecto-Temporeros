@@ -21,6 +21,12 @@ export class TrabajadoresService {
       return this.http.post('http://localhost:3300/trabajadores/login', usuario);
     }
     ifLogin(): boolean {
-      return !!localStorage.getItem('token');
+    return !!localStorage.getItem('token');
+    }
+    logOut() {
+      localStorage.removeItem('token');
+    }
+    getToken() {
+      return localStorage.getItem('token');
     }
 }

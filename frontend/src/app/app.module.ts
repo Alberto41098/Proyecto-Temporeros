@@ -14,6 +14,7 @@ import { RegistrarUsuarioComponent } from './componentes/registrar-usuario/regis
 import { RegistrarEmpresaComponent } from './componentes/registrar-empresa/registrar-empresa.component';
 import { LoadingComponent } from './componentes/loading/loading.component';
 import { LoginEmpresaComponent } from './componentes/login-empresa/login-empresa.component';
+import { PrivComponent } from './componentes/priv/priv.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LoginEmpresaComponent } from './componentes/login-empresa/login-empresa
     RegistrarEmpresaComponent,
     LoadingComponent,
     LoginEmpresaComponent,
+    PrivComponent,
   ],
   imports: [
     BrowserModule,

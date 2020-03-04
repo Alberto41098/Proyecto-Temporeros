@@ -27,8 +27,9 @@ export class LoginUsuarioComponent implements OnInit {
       email: this.email.value,
       pass: this.pass.value
     }).subscribe(
-      (res) => {
-        console.log(res);
+      (res: any) => {
+        localStorage.setItem('token', res);
+        this.router.navigate(['portada']);
       },
       (err) => {
         console.log(err);

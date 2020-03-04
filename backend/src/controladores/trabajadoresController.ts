@@ -2,7 +2,7 @@ import { Request, Response, json } from 'express';
 import pool from '../database';
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const SECRET_KEY = 'aoa';
+const SECRET_KEY = 'mab';
 // import * as CryptoJS from 'crypto-js';
 const salt = bcrypt.genSaltSync(10);
 class TabajadoresController {
