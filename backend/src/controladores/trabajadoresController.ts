@@ -14,34 +14,43 @@ class TabajadoresController {
         const trabajadores = await pool.query('SELECT * FROM trabajadores', [req.body]);
         res.json(trabajadores);
     }
-    public async update(req: Request, res: Response) { 
+    public async update(req: Request, res: Response) {
         const { id } = req.params;
         await pool.query('UPDATE trabajadores SET ? WHERE id_trabajador = ?', [id]);
     }
-    public async delete(req: Request, res: Response) { 
+    public async delete(req: Request, res: Response) {
         const { id } = req.params;
         await pool.query('DELETE FROM trabajadores WHERE id_trabajador = ?', [id]);
     }
-    public async reademail(req: Request, res: Response) { 
+    public async reademail(req: Request, res: Response) {
         const { email } = req.params;
         const trabajador = await pool.query('SELECT email FROM trabajadores WHERE email = ?', [email]);
         res.json(trabajador)
     }
-    public async readdni(req: Request, res: Response) { 
+    public async readdni(req: Request, res: Response) {
         const { dni } = req.params;
         const trabajador = await pool.query('SELECT dni FROM trabajadores WHERE dni = ?', [dni]);
         res.json(trabajador)
     }
-    public async readone(req: Request, res: Response) { 
+    public async readone(req: Request, res: Response) {
         const { id } = req.params;
         const trabajador = await pool.query('SELECT * FROM trabajadores WHERE id_trabajador = ?', [id]);
         res.json(trabajador)
     }
-    public async readlogin(req: Request, res: Response) { 
+    public async readtoken(req: Request, res: Response) {
+        const { token } = req.body;
+        const trabajador = await pool.query('SELECT * FROM trabajadores WHERE user_session_token = ?', [token]);
+        if (trabajador.length == 0) {
+            res.json({ message: 'no se encontro' });
+        } else {
+            res.json(trabajador)
+        }
+    }
+    public async readlogin(req: Request, res: Response) {
         const { email, pass } = req.body;
         const trabajadores = await pool.query('SELECT * FROM trabajadores WHERE email = ?', [email]);
         if (trabajadores.length == 0) {
-            res.json({message: 'no se encontro'});
+            res.json({ message: 'no se encontro' });
         } else {
             bcrypt.compare(pass, trabajadores[0].pass, (err: any, result: any) => {
                 if (result) {

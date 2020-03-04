@@ -14,6 +14,7 @@ class TrabajadoresRoutes {
         this.router.post('/login', trabajadoresController.readlogin);
         this.router.get('/email/:email', trabajadoresController.reademail);
         this.router.get('/dni/:dni', trabajadoresController.readdni);
+        this.router.post('/trabajador', trabajadoresController.readtoken);
     }
 }
 const trabajadoresRoutes = new TrabajadoresRoutes();

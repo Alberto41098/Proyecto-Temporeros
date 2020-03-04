@@ -64,6 +64,18 @@ class TabajadoresController {
             res.json(trabajador);
         });
     }
+    readtoken(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { token } = req.body;
+            const trabajador = yield database_1.default.query('SELECT * FROM trabajadores WHERE user_session_token = ?', [token]);
+            if (trabajador.length == 0) {
+                res.json({ message: 'no se encontro' });
+            }
+            else {
+                res.json(trabajador);
+            }
+        });
+    }
     readlogin(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, pass } = req.body;
