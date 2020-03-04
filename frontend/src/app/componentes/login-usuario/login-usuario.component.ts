@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginUsuarioComponent implements OnInit {
   public formUsuario: FormGroup;
+  loading = false;
+  clase = 'div-form';
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private trabajadoresService: TrabajadoresService) {
@@ -28,13 +30,23 @@ export class LoginUsuarioComponent implements OnInit {
       pass: this.pass.value
     }).subscribe(
       (res: any) => {
-        localStorage.setItem('token', res);
-        this.router.navigate(['portada']);
+        this.clase = 'div-form des';
+        setTimeout(() => {
+          this.loading = true;
+        }, 450);
+        setTimeout(() => {
+          this.loading = false;
+          localStorage.setItem('token', res);
+          this.router.navigate(['portada']);
+        }, 1500);
       },
       (err) => {
         console.log(err);
       }
     );
+  }
+  getClass(): string {
+    return this.clase;
   }
   // getter
   get email() { return this.formUsuario.get('email'); }

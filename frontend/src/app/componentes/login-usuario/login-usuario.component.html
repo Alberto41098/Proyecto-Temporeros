@@ -1,5 +1,5 @@
 <div class="todo-form">
-  <div class="div-form">
+  <div [className]="getClass()" *ngIf="!loading">
     <div class="card-header">
       <h3 class="mb-0">Login</h3>
     </div>
@@ -25,4 +25,5 @@
         </div>
     </form>
   </div>
+  <app-loading *ngIf="loading"></app-loading>
 </div>

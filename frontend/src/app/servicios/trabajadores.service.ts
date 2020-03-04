@@ -20,6 +20,9 @@ export class TrabajadoresService {
     getLogin(usuario: Temporero) {
       return this.http.post('http://localhost:3300/trabajadores/login', usuario);
     }
+    getUsuarioToken(token: any) {
+      return this.http.post('http://localhost:3300/trabajadores/trabajador', token);
+    }
     ifLogin(): boolean {
     return !!localStorage.getItem('token');
     }
