@@ -70,6 +70,18 @@ class EmpresasController {
             res.json(empresa);
         });
     }
+    readtoken(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { token } = req.body;
+            const empresa = yield database_1.default.query('SELECT * FROM empresas WHERE user_session_token = ?', [token]);
+            if (empresa.length == 0) {
+                res.json({ message: 'no se encontro' });
+            }
+            else {
+                res.json(empresa);
+            }
+        });
+    }
     readlogin(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, pass } = req.body;
