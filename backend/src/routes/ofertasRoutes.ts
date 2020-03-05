@@ -9,6 +9,9 @@ class OfertasRoutes{
         this.router.post('/', ofertasController.create);
         this.router.get('/', ofertasController.read);
         this.router.post('/busqueda', ofertasController.readofertasbuscador);
+        this.router.post('/trabajador', ofertasController.readofertastrabajador);
+        this.router.post('/empresa', ofertasController.readofertasempresa);
+        
     }
 }
 const ofertasRoutes = new OfertasRoutes();
