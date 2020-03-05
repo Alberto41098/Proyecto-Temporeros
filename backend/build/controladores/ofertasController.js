@@ -25,6 +25,18 @@ class OfertasController {
             res.json(ofertas);
         });
     }
+    readofertastrabajador(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ofertas = yield database_1.default.query('SELECT * FROM ofertas where id_oferta in(select oferta_id from solicitudes where trabajador_id in ? )', [req.body.id]);
+            res.json(ofertas);
+        });
+    }
+    readofertasempresa(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ofertas = yield database_1.default.query('SELECT * FROM ofertas where empresa_id in ? )', [req.body.id]);
+            res.json(ofertas);
+        });
+    }
     readofertasbuscador(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             if ((req.body.texto == "") && (req.body.prov == "")) {
