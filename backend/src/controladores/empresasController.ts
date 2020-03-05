@@ -54,7 +54,7 @@ class EmpresasController {
         const { email, pass } = req.body;
         const empresas = await pool.query('SELECT * FROM empresas WHERE email = ?', [email]);
         if (empresas.length == 0) {
-            res.json({ message: 'no se encontro' });
+            res.json({ msg: false });
         } else {
             bcrypt.compare(pass, empresas[0].pass, (err: any, result: any) => {
                 if (result) {
@@ -66,9 +66,9 @@ class EmpresasController {
                     } else {
                         accessToken = empresas[0].user_session_token;
                     }
-                    res.json(accessToken);
+                    res.json({ msg: accessToken });
                 } else {
-                    res.json({ mes: 'usuario y contraseña incorrecta' });
+                    res.json({ msg: false });
                 }
             });
         }

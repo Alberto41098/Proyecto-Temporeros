@@ -50,7 +50,7 @@ class TabajadoresController {
         const { email, pass } = req.body;
         const trabajadores = await pool.query('SELECT * FROM trabajadores WHERE email = ?', [email]);
         if (trabajadores.length == 0) {
-            res.json({ message: 'no se encontro' });
+            res.json({ msg: false });
         } else {
             bcrypt.compare(pass, trabajadores[0].pass, (err: any, result: any) => {
                 if (result) {
@@ -61,9 +61,9 @@ class TabajadoresController {
                     } else {
                         accessToken = trabajadores[0].user_session_token;
                     }
-                    res.json(accessToken);
+                    res.json({ msg : accessToken });
                 } else {
-                    res.json({ mes: 'usuario y contraseña incorrecta' });
+                    res.json({ msg: false });
                 }
             });
         }

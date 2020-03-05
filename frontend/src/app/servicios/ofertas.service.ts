@@ -9,7 +9,14 @@ import { Observable } from 'rxjs';
 export class OfertasService {
 
   constructor(private http: HttpClient) { }
-  busquedaBarra(ofertas :any): Observable<any> {
-    return this.http.post('http://localhost:3300/ofertas/busqueda',ofertas);
+  ofertas: Array<any>;
+  busquedaBarra(ofertas: any): Observable<any> {
+    return this.http.post('http://localhost:3300/ofertas/busqueda', ofertas);
+  }
+  setOfertas(datos) {
+    this.ofertas = datos;
+  }
+  getOfertas() {
+    return this.ofertas;
   }
 }

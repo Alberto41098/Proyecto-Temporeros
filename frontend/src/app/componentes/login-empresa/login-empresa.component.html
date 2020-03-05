@@ -1,5 +1,10 @@
 <div class="todo-form">
   <div *ngIf="!loading" [className]="getClass()">
+    <div class="form-text text-muted">
+      <div class="alert alert-danger error" *ngIf="error">
+        <p class="msg">Email o contraseña incorrecto</p>
+      </div>
+    </div>
     <div class="card-header">
       <h3 class="mb-0">Login Empresa</h3>
     </div>
@@ -19,7 +24,8 @@
           <div>¡Date a conocer y crea ofertas! <a [routerLink]="['/registrar/empresa']">Registrate</a></div>
         </div>
         <div class="boton">
-          <button type="submit" class="btn btn-primary">Entrar</button>
+          <button type="submit" class="btn btn-primary"
+            [disabled]="formEmpresa.invalid || !pass.value || !email.value">Entrar</button>
         </div>
       </div>
     </form>

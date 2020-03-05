@@ -52,3 +52,15 @@
   animation-name: desa;
   animation-duration: .5s;
 }
+.error {
+  text-align: center;
+  animation: crecerError .3s ease-in-out;
+  height: 48px;
+  margin-bottom: 16px;
+  padding: 12px;
+}
+
+.msg {
+  opacity: 0;
+  animation: aparecerMsg .2s ease-in-out .31s forwards;
+}

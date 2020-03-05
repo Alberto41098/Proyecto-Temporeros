@@ -43,3 +43,28 @@ body {
     opacity: 0;
   }
 }
+@keyframes crecerError {
+  from {
+    margin-bottom: 0;
+    padding: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  to {
+    margin-bottom: 16px;
+    padding: 12px;
+    height: 48px;
+    opacity: 1;
+  }
+}
+
+@keyframes aparecerMsg {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
