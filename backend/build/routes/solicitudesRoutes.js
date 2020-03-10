@@ -8,7 +8,7 @@ class SolicitudesRoutes {
         this.config();
     }
     config() {
-        this.router.get('/:trabajador_id/:oferta_id', solicitudesController_1.solicitudesController.create);
+        this.router.post('/', solicitudesController_1.solicitudesController.create);
     }
 }
 const solicitudesRoutes = new SolicitudesRoutes();

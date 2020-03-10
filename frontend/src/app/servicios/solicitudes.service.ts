@@ -10,6 +10,6 @@ export class SolicitudesService {
   solicitud: any;
   constructor(private http: HttpClient) { }
     insertSolicitud(solicitud: Solicitud): Observable<any> {
-    return this.http.get('http://localhost:3300/solicitudes/' + solicitud.trabajador_id + '/' + solicitud.oferta_id);
+    return this.http.post('http://localhost:3300/solicitudes/' , solicitud);
     }
 }

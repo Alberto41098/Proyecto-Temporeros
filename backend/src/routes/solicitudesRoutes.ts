@@ -6,7 +6,7 @@ class SolicitudesRoutes {
         this.config();
     }
     config(): void{
-        this.router.get('/:trabajador_id/:oferta_id', solicitudesController.create);
+        this.router.post('/', solicitudesController.create);
     }
 }
 const solicitudesRoutes = new SolicitudesRoutes();

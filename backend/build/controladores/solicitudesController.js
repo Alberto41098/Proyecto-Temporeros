@@ -16,7 +16,7 @@ const database_1 = __importDefault(require("../database"));
 class SolicitudesController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const empresa = yield database_1.default.query('INSERT INTO solicitudes SET ?', [req.params]);
+            const empresa = yield database_1.default.query('INSERT INTO solicitudes SET ?', [req.body]);
             res.json(empresa);
         });
     }
