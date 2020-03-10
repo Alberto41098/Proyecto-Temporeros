@@ -33,6 +33,7 @@ export class BarraBusquedaComponent implements OnInit {
   submit() {
     this.ofertasService.busquedaBarra(this.formBusqueda.value).subscribe(
       (res) => {
+        this.ofertasService.setPerfil(false);
         this.ofertasService.setOfertas(res);
         this.router.navigate(['search']);
       }

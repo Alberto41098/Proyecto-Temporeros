@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 export class OfertasService {
 
   constructor(private http: HttpClient) { }
-  ofertas: Array<any>;
+  ofertas = [];
+  perfilUsuario = false;
   busquedaBarra(ofertas: any): Observable<any> {
     return this.http.post('http://localhost:3300/ofertas/busqueda', ofertas);
   }
@@ -24,5 +25,11 @@ export class OfertasService {
   }
   getOfertas() {
     return this.ofertas;
+  }
+  setPerfil(a: boolean) {
+    this.perfilUsuario = a;
+  }
+  ifPerfil() {
+    return this.perfilUsuario;
   }
 }

@@ -3,9 +3,11 @@
     <app-ofertas></app-ofertas>
   </div>
   <div class="datosuser">
-    <div class="usuario">
+    <div class="usuario" *ngIf="!quien">
       <app-datos-empresa></app-datos-empresa>
-      <!--<app-datos-usuario></app-datos-usuario>-->
+    </div>
+    <div class="usuario" *ngIf="quien">
+      <app-datos-usuario></app-datos-usuario>
     </div>
   </div>
 </div>

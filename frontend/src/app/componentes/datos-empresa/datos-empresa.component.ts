@@ -17,7 +17,6 @@ export class DatosEmpresaComponent implements OnInit {
       this.loaded = true;
       this.loading = false;
       this.empresa = this.empresasServicio.getEmpresa();
-      console.log(this.empresa);
     }, 1000);
   }
 

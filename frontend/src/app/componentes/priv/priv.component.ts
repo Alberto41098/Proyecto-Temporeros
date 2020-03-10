@@ -8,6 +8,7 @@ import { OfertasService } from '../../servicios/ofertas.service';
   styleUrls: ['./priv.component.scss']
 })
 export class PrivComponent implements OnInit {
+  quien: boolean;
   control = false;
   constructor(private trabajadoresServicio: TrabajadoresService,
               private empresasServicio: EmpresasService,
@@ -22,6 +23,7 @@ export class PrivComponent implements OnInit {
         } else {
           this.control = true;
           this.trabajadoresServicio.setUsuario(res.msg[0]);
+          this.quien = true;
           id = res.msg[0].id_trabajador;
           this.cargarOfertas(id, false);
         }
@@ -33,6 +35,7 @@ export class PrivComponent implements OnInit {
           if (res.msg) {
             this.empresasServicio.setEmpresa(res.msg[0]);
             id = res.msg[0].id_empresa;
+            this.quien = false;
             this.cargarOfertas(id, true);
           }
         }
@@ -49,6 +52,7 @@ export class PrivComponent implements OnInit {
     } else {
       this.ofertasServicio.ofertasTrabajador({ id }).subscribe(
         (res) => {
+          this.ofertasServicio.setPerfil(true);
           this.ofertasServicio.setOfertas(res);
         }
       );

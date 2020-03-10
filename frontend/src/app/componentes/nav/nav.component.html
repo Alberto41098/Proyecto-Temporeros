@@ -17,7 +17,7 @@
       <ng-container *ngIf="(trabajadoresService.ifLogin() || empresasService.ifLogin()) else logedOut">
         <ul class="navbar-nav navopciones">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/priv']">Perfil</a>
+            <a class="nav-link" [routerLink]="['/perfil']">Perfil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/portada']" (click)="logOut()">Cerrar sesión</a>
