@@ -1,11 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <a class="navbar-brand" [routerLink]="['/portada']">Temporeros</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/portada']">Temporeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="icon-bar top-bar"></span>
+    <span class="icon-bar middle-bar"></span>
+    <span class="icon-bar bottom-bar"></span>
+    </button> -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
       </ul>
       <ng-container *ngIf="(trabajadoresService.ifLogin() || empresasService.ifLogin()) else logedOut">
         <ul class="navbar-nav navopciones">
@@ -13,19 +20,20 @@
             <a class="nav-link" [routerLink]="['/priv']">Perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/portada']" (click)="trabajadoresService.logOut()">Cerrar sesión</a>
+            <a class="nav-link" [routerLink]="['/portada']" (click)="logOut()">Cerrar sesión</a>
           </li>
         </ul>
       </ng-container>
-    <ng-template #logedOut>
-      <ul class="navbar-nav navopciones">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login/empresa']">Zona empresa</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login/usuario']">Iniciar sesión</a>
-        </li>
-      </ul>
-    </ng-template>
+      <ng-template #logedOut>
+        <ul class="navbar-nav navopciones">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/login/empresa']">Zona empresa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/login/usuario']">Iniciar sesión</a>
+          </li>
+        </ul>
+      </ng-template>
+    </div>
   </div>
 </nav>

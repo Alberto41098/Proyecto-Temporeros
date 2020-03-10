@@ -75,10 +75,10 @@ class EmpresasController {
             const { token } = req.body;
             const empresa = yield database_1.default.query('SELECT * FROM empresas WHERE user_session_token = ?', [token]);
             if (empresa.length == 0) {
-                res.json({ message: 'no se encontro' });
+                res.json({ msg: false });
             }
             else {
-                res.json(empresa);
+                res.json({ msg: empresa });
             }
         });
     }

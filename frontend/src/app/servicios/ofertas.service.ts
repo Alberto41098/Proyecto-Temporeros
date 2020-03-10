@@ -13,6 +13,12 @@ export class OfertasService {
   busquedaBarra(ofertas: any): Observable<any> {
     return this.http.post('http://localhost:3300/ofertas/busqueda', ofertas);
   }
+  ofertasTrabajador(id: any) {
+    return this.http.post('http://localhost:3300/ofertas/trabajador', id);
+  }
+  ofertasEmpresa(id: any) {
+    return this.http.post('http://localhost:3300/ofertas/empresa', id);
+  }
   setOfertas(datos) {
     this.ofertas = datos;
   }

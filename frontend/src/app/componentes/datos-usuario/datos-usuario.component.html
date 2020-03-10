@@ -1,0 +1,33 @@
+<div class="todo">
+  <div class="loading centrado" *ngIf="loading">
+    <app-loading></app-loading>
+  </div>
+  <div class="content" *ngIf="loaded">
+    <div class="header centrado">
+        <app-img-usuario></app-img-usuario>
+    </div>
+    <div class="main">
+        <div class="nombre param centrado">
+            {{usuario.nombre}} {{usuario.apellidos}}
+        </div>
+        <div class="email param centrado">
+          <div>Email: </div>
+          <div>{{usuario.email}}</div>
+        </div>
+        <div class="dni param centrado">
+            <div>DNI: </div>
+            <div>{{usuario.DNI}}</div>
+        </div>
+        <div class="tlf param centrado">
+            <div>Tlf: </div>
+            <div>{{usuario.telefono}}</div>
+        </div>
+        <div class="muni param centrado">
+            <div>{{usuario.municipio}}</div>
+        </div>
+    </div>
+    <!--<div *ngFor="let item of usuario | keyvalue">
+        Key: <b>{{item.key}}</b> and Value: <b>{{item.value}}</b>
+    </div>-->
+  </div>
+</div>

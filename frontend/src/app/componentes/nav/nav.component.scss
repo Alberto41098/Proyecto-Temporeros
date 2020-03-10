@@ -11,3 +11,22 @@ nav {
     animation-name: aparecer;
     animation-duration: 0.5s;
 }
+.icon-bar {
+  width: 22px;
+  height: 2px;
+  background-color: #B6B6B6;
+  display: block;
+  transition: all 0.2s;
+  margin-top: 4px
+}
+
+.navbar-toggler {
+  border: none;
+  background: transparent !important;
+}
+#navbarNav{
+  transition: all .3s ease-in-out !important;
+}
+.collapse, .collapsing{
+  text-align: right !important;
+}

@@ -43,7 +43,7 @@ const routes: Routes = [
   {
     path: 'priv',
     component: PrivComponent,
-    canActivate: [GAuthTrabajadorGuard, GAuthEmpresaGuard]
+    canActivate: [GAuthTrabajadorGuard]
   }
 ];
 

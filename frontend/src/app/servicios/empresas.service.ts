@@ -6,7 +6,7 @@ import { Empresa } from '../modelos/empresa';
   providedIn: 'root'
 })
 export class EmpresasService {
-
+  empresa: any;
   constructor(private http: HttpClient) { }
     insertEmpresa(empresa: Empresa): Observable<any> {
     return this.http.post('http://localhost:3300/empresas', empresa);
@@ -20,13 +20,22 @@ export class EmpresasService {
   getLogin(empresa: Empresa) {
     return this.http.post('http://localhost:3300/empresas/login', empresa);
   }
-  ifLogin(): boolean {
-    return !!localStorage.getItem('token');
+  getEmpresaToken(token: any) {
+      return this.http.post('http://localhost:3300/empresas/empresa', token);
+    }
+    ifLogin(): boolean {
+    return !!localStorage.getItem('tkn-emp');
     }
     logOut() {
-      localStorage.removeItem('token');
+      localStorage.removeItem('tkn-emp');
     }
     getToken() {
-      return localStorage.getItem('token');
+      return localStorage.getItem('tkn-emp');
     }
+  setEmpresa(emp: any) {
+    this.empresa = emp;
+  }
+  getEmpresa() {
+    return this.empresa;
+  }
 }

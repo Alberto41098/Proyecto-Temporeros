@@ -25,6 +25,10 @@ body {
   background: #666;
   border-radius: 10px;
 }
+::selection {
+  background-color: #f8b26a;
+  color: #F8F9FA;
+}
 @keyframes aparecer {
   from {
     opacity: 0;

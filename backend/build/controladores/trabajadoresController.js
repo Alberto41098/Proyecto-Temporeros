@@ -67,12 +67,13 @@ class TabajadoresController {
     readtoken(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { token } = req.body;
-            const trabajador = yield database_1.default.query('SELECT * FROM trabajadores WHERE user_session_token = ?', [token]);
+            // const trabajador = await pool.query('SELECT * FROM trabajadores WHERE user_session_token = ?', [token]);
+            const trabajador = yield database_1.default.query('SELECT trabajadores.id_trabajador, trabajadores.DNI, trabajadores.nombre, trabajadores.apellidos, trabajadores.email, trabajadores.telefono, trabajadores.curriculum, trabajadores.municipio_id, municipios.municipio FROM trabajadores, municipios WHERE user_session_token = ? and trabajadores.municipio_id = municipios.id', [token]);
             if (trabajador.length == 0) {
-                res.json({ message: 'no se encontro' });
+                res.json({ msg: false });
             }
             else {
-                res.json(trabajador);
+                res.json({ msg: trabajador });
             }
         });
     }

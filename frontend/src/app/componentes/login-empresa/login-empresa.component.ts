@@ -38,7 +38,7 @@ export class LoginEmpresaComponent implements OnInit {
           }, 450);
           setTimeout(() => {
             this.loading = false;
-            localStorage.setItem('token', res.msg);
+            localStorage.setItem('tkn-emp', res.msg);
             this.router.navigate(['portada']);
           }, 1500);
         }

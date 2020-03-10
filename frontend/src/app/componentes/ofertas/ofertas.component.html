@@ -1,0 +1,42 @@
+<div class="lodingtodo" *ngIf="init">
+  <app-loading></app-loading>
+</div>
+<div class="todo" infiniteScroll [infiniteScrollDistance]="0.5" (scrolled)="onScroll()" *ngIf="!init">
+  <div class="listado">
+    <div *ngFor="let oferta of mostrar" class="oferta">
+      <div class="item-oferta">
+        <div class="icon">
+          <div class="svg"></div>
+        </div>
+        <div class="info">
+          <div class="titulo">
+            {{oferta.titulo}}
+          </div>
+          <div class="empresa">
+            {{oferta.empresa}}
+          </div>
+          <div class="desc">
+            <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam quas corrupti totam in eius, neque eligendi
+            harum beatae, iste officiis velit repellendus excepturi tempora nulla asperiores corporis, enim
+            reprehenderit nobis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nostrum iure commodi
+            porro ut quisquam illum eos rem voluptatum, labore ratione error, voluptate, quis vero inventore quasi!
+            Maxime, sed optio? -->
+            {{oferta.descripcion}}
+          </div>
+          <div class="foot">
+            <div class="datos">
+              <div class="loca">Localidad: {{oferta.municipio}}</div>
+              <div class="loca">Inicio:
+                {{oferta.fecha_inicio.substring(8, 10)}}-{{oferta.fecha_inicio.substring(5, 7)}}-{{oferta.fecha_inicio.substring(0, 4)}}
+              </div>
+            </div>
+            <button class="btn btn-primary" *ngIf="trabajadoresService.ifLogin()">Inscribirse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="loading">
+      <app-loading *ngIf="loading"></app-loading>
+    </div>
+  </div>
+</div>

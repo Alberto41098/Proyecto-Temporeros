@@ -13,5 +13,11 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  logOut() {
+    if (this.trabajadoresService.ifLogin()) {
+      this.trabajadoresService.logOut();
+    } else {
+      this.empresasService.logOut();
+    }
+  }
 }

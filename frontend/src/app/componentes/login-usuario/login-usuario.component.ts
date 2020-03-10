@@ -39,7 +39,7 @@ export class LoginUsuarioComponent implements OnInit {
           }, 450);
           setTimeout(() => {
             this.loading = false;
-            localStorage.setItem('token', res.msg);
+            localStorage.setItem('tkn-tra', res.msg);
             this.router.navigate(['portada']);
           }, 1500);
         }

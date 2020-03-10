@@ -6,7 +6,7 @@ import { Temporero } from '../modelos/temporero';
   providedIn: 'root'
 })
 export class TrabajadoresService {
-
+  usuario: any;
   constructor(private http: HttpClient) { }
     insertTrabajador(trabajador: Temporero): Observable<any> {
     return this.http.post('http://localhost:3300/trabajadores', trabajador);
@@ -24,12 +24,18 @@ export class TrabajadoresService {
       return this.http.post('http://localhost:3300/trabajadores/trabajador', token);
     }
     ifLogin(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('tkn-tra');
     }
     logOut() {
-      localStorage.removeItem('token');
+      localStorage.removeItem('tkn-tra');
     }
     getToken() {
-      return localStorage.getItem('token');
+      return localStorage.getItem('tkn-tra');
     }
+  getUsuario() {
+    return this.usuario;
+  }
+  setUsuario(usr: any) {
+    this.usuario = usr;
+  }
 }
