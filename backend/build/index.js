@@ -8,6 +8,7 @@ const provinciasRoutes_1 = __importDefault(require("./routes/provinciasRoutes"))
 const trabajadoresRoutes_1 = __importDefault(require("./routes/trabajadoresRoutes"));
 const empresasRoutes_1 = __importDefault(require("./routes/empresasRoutes"));
 const ofertasRoutes_1 = __importDefault(require("./routes/ofertasRoutes"));
+const solicitudesRoutes_1 = __importDefault(require("./routes/solicitudesRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 class Servidor {
@@ -27,6 +28,7 @@ class Servidor {
         this.app.use('/empresas', empresasRoutes_1.default);
         this.app.use('/provincias', provinciasRoutes_1.default);
         this.app.use('/ofertas', ofertasRoutes_1.default);
+        this.app.use('/solicitudes', solicitudesRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
