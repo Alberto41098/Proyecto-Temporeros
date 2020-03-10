@@ -39,7 +39,7 @@ export class LoginEmpresaComponent implements OnInit {
           setTimeout(() => {
             this.loading = false;
             localStorage.setItem('tkn-emp', res.msg);
-            this.router.navigate(['portada']);
+            this.router.navigate(['perfil']);
           }, 1500);
         }
       },

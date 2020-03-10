@@ -12,6 +12,13 @@
   animation-name: aparecer;
   animation-duration: 0.5s;
 }
+.nada{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .oferta {
   padding-top: 10px;

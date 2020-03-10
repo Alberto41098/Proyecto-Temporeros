@@ -73,7 +73,7 @@ class EmpresasController {
     readtoken(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { token } = req.body;
-            const empresa = yield database_1.default.query('SELECT * FROM empresas WHERE user_session_token = ?', [token]);
+            const empresa = yield database_1.default.query('SELECT empresas.id_empresa, empresas.cifnif, empresas.nombre, empresas.email, empresas.municipios_id, municipios.municipio FROM empresas, municipios WHERE user_session_token = ? and municipios.id = empresas.municipios_id', [token]);
             if (empresa.length == 0) {
                 res.json({ msg: false });
             }

@@ -20,6 +20,7 @@ import { OfertasComponent } from './componentes/ofertas/ofertas.component';
 import { DatosUsuarioComponent } from './componentes/datos-usuario/datos-usuario.component';
 import { ImgUsuarioComponent } from './componentes/img-usuario/img-usuario.component';
 import { DatosEmpresaComponent } from './componentes/datos-empresa/datos-empresa.component';
+import { ImgEmpresaComponent } from './componentes/img-empresa/img-empresa.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { DatosEmpresaComponent } from './componentes/datos-empresa/datos-empresa
     DatosUsuarioComponent,
     ImgUsuarioComponent,
     DatosEmpresaComponent,
+    ImgEmpresaComponent,
   ],
   imports: [
     BrowserModule,
