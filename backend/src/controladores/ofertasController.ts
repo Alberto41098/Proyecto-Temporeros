@@ -37,7 +37,7 @@ class OfertasController {
 
   }
   public async readofertasultimas(req: Request, res: Response) {
-    const ofertas = await pool.query('SELECT id_oferta, titulo, descripcion, fecha_inicio, activo, vacantes, municipio_id, recogida_id, empresa_id, municipio, recogidas.nombre, empresas.nombre as empresa FROM ofertas, municipios, recogidas, empresas where municipio_id = municipios.id and recogida_id = id_recogida and id_empresa = empresa_id order by ofertas.fecha DESC limit 8;');
+    const ofertas = await pool.query('SELECT id_oferta, titulo, descripcion, fecha_inicio, activo, vacantes, municipio_id, recogida_id, empresa_id, municipio, recogidas.nombre, empresas.nombre as empresa FROM ofertas, municipios, recogidas, empresas where municipio_id = municipios.id and recogida_id = id_recogida and id_empresa = empresa_id order by id_oferta DESC limit 8;');
     res.json(ofertas);
   }
 

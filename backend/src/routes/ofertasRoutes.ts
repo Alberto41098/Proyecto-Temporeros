@@ -11,7 +11,7 @@ class OfertasRoutes{
         this.router.post('/busqueda', ofertasController.readofertasbuscador);
         this.router.post('/trabajador', ofertasController.readofertastrabajador);
         this.router.post('/empresa', ofertasController.readofertasempresa);
-        this.router.post('/ofertas', ofertasController.readofertasultimas);
+        this.router.get('/ofertas', ofertasController.readofertasultimas);
         
     }
 }

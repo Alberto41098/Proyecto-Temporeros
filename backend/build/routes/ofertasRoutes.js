@@ -13,7 +13,7 @@ class OfertasRoutes {
         this.router.post('/busqueda', ofertasController_1.ofertasController.readofertasbuscador);
         this.router.post('/trabajador', ofertasController_1.ofertasController.readofertastrabajador);
         this.router.post('/empresa', ofertasController_1.ofertasController.readofertasempresa);
-        this.router.post('/ofertas', ofertasController_1.ofertasController.readofertasultimas);
+        this.router.get('/ofertas', ofertasController_1.ofertasController.readofertasultimas);
     }
 }
 const ofertasRoutes = new OfertasRoutes();

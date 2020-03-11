@@ -23,6 +23,8 @@ import { DatosEmpresaComponent } from './componentes/datos-empresa/datos-empresa
 import { ImgEmpresaComponent } from './componentes/img-empresa/img-empresa.component';
 import { CarruselPortadaComponent } from './componentes/carrusel-portada/carrusel-portada.component';
 import { NoHayNadaComponent } from './componentes/no-hay-nada/no-hay-nada.component';
+import { LogoXlTemporerosComponent } from './componentes/logo-xl-temporeros/logo-xl-temporeros.component';
+import { TopEmpresasComponent } from './componentes/top-empresas/top-empresas.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { NoHayNadaComponent } from './componentes/no-hay-nada/no-hay-nada.compon
     ImgEmpresaComponent,
     CarruselPortadaComponent,
     NoHayNadaComponent,
+    LogoXlTemporerosComponent,
+    TopEmpresasComponent,
   ],
   imports: [
     BrowserModule,

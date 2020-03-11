@@ -1,14 +1,28 @@
-.todo{
-    height: 100%;
-    width: 100%;
+.todo {
+  height: 100%;
+  width: 100%;
 }
-.carousel{
-    height: 100% !important;
-    width: 100% !important;
+
+.carousel {
+  height: 100% !important;
+  width: 100% !important;
 }
-.control{
-    transition: all .3s ease-in-out;
+
+.control {
+  transition: all .3s ease-in-out;
+
 }
-.control:hover{
-    background: rgba($color: #000000, $alpha: 0.1);
+
+.control:hover {
+  background: rgba($color: #000000, $alpha: 0.1);
+}
+
+.item {
+  padding: 10px;
+  animation: aparecer .3s ease-in-out;
+}
+
+.ofertas {
+  overflow: auto;
+//   height: 500px;
 }

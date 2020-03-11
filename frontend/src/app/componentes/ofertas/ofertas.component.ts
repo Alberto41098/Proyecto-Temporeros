@@ -31,7 +31,6 @@ export class OfertasComponent implements OnInit {
       this.perfil = this.ofertaService.ifPerfil();
       this.ofertas = this.ofertaService.getOfertas();
       this.add10lines();
-      console.log(this.ofertas);
       this.init = false;
       if (this.mostrar.length === 0) {
         this.nada = true;

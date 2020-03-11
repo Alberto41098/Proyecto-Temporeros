@@ -22,7 +22,10 @@ export class EmpresasService {
   }
   getEmpresaToken(token: any) {
       return this.http.post('http://localhost:3300/empresas/empresa', token);
-    }
+  }
+  getTopEmpresas() {
+    return this.http.get('http://localhost:3300/empresas/ofertas');
+  }
     ifLogin(): boolean {
     return !!localStorage.getItem('tkn-emp');
     }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OfertasService } from '../../servicios/ofertas.service';
 @Component({
   selector: 'app-portada-main',
   templateUrl: './portada-main.component.html',
@@ -6,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortadaMainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ofertasService: OfertasService) { }
 
   ngOnInit() {
+    this.ofertasService.getRecientes().subscribe(
+      (res) => {
+        this.ofertasService.setPerfil(true);
+        this.ofertasService.setOfertas(res);
+      }
+    );
   }
 
 }
