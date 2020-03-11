@@ -4,7 +4,7 @@
 <div class="todo" infiniteScroll [infiniteScrollDistance]="0.5" (scrolled)="onScroll()" *ngIf="!init">
   <div class="nada" *ngIf="nada">
     <div class="msg">
-      No hay nada
+      <app-no-hay-nada></app-no-hay-nada>
     </div>
   </div>
   <div class="listado">
@@ -36,7 +36,7 @@
               </div>
             </div>
             <button class="btn btn-primary"
-              *ngIf="trabajadoresService.ifLogin() && !perfil" >Inscribirse</button>
+              *ngIf="trabajadoresService.ifLogin() && !perfil" (click)="inscribirse(oferta.id_oferta)">Inscribirse</button>
           </div>
         </div>
       </div>
@@ -44,5 +44,8 @@
     <div class="loading">
       <app-loading *ngIf="loading"></app-loading>
     </div>
+  </div>
+  <div class="error" *ngIf="existeInscripcion">
+    Ya te has inscrito a esta oferta
   </div>
 </div>

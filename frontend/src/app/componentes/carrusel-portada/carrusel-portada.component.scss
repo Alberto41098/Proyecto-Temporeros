@@ -1,0 +1,14 @@
+.todo{
+    height: 100%;
+    width: 100%;
+}
+.carousel{
+    height: 100% !important;
+    width: 100% !important;
+}
+.control{
+    transition: all .3s ease-in-out;
+}
+.control:hover{
+    background: rgba($color: #000000, $alpha: 0.1);
+}

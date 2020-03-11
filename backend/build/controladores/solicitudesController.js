@@ -16,8 +16,14 @@ const database_1 = __importDefault(require("../database"));
 class SolicitudesController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const empresa = yield database_1.default.query('INSERT INTO solicitudes SET ?', [req.body]);
-            res.json(empresa);
+            const check = yield database_1.default.query('SELECT id_solicitud FROM solicitudes WHERE trabajador_id = ? and oferta_id = ?', [req.body.trabajador_id, req.body.oferta_id]);
+            if (check.length == 0) {
+                database_1.default.query('INSERT INTO solicitudes SET ?', [req.body]);
+                res.json({ succ: true });
+            }
+            else {
+                res.json({ succ: false });
+            }
         });
     }
     readofertas(req, res) {

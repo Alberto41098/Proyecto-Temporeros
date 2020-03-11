@@ -21,6 +21,8 @@ import { DatosUsuarioComponent } from './componentes/datos-usuario/datos-usuario
 import { ImgUsuarioComponent } from './componentes/img-usuario/img-usuario.component';
 import { DatosEmpresaComponent } from './componentes/datos-empresa/datos-empresa.component';
 import { ImgEmpresaComponent } from './componentes/img-empresa/img-empresa.component';
+import { CarruselPortadaComponent } from './componentes/carrusel-portada/carrusel-portada.component';
+import { NoHayNadaComponent } from './componentes/no-hay-nada/no-hay-nada.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { ImgEmpresaComponent } from './componentes/img-empresa/img-empresa.compo
     ImgUsuarioComponent,
     DatosEmpresaComponent,
     ImgEmpresaComponent,
+    CarruselPortadaComponent,
+    NoHayNadaComponent,
   ],
   imports: [
     BrowserModule,
