@@ -20,6 +20,9 @@ export class OfertasService {
   ofertasEmpresa(id: any) {
     return this.http.post('http://localhost:3300/ofertas/empresa', id);
   }
+  getRecientes() {
+    return this.http.get('http://localhost:3300/ofertas/ofertas');
+  }
   setOfertas(datos) {
     this.ofertas = datos;
   }
@@ -32,5 +35,4 @@ export class OfertasService {
   ifPerfil() {
     return this.perfilUsuario;
   }
-  
 }
