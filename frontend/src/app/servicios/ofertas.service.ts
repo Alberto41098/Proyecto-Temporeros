@@ -32,4 +32,5 @@ export class OfertasService {
   ifPerfil() {
     return this.perfilUsuario;
   }
+  
 }
