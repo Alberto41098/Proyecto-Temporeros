@@ -20,5 +20,11 @@ class SolicitudesController {
             res.json(empresa);
         });
     }
+    readofertas(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const solicitudes = yield database_1.default.query('SELECT * FROM solicitudes where oferta_id=?', [req.body]);
+            res.json(solicitudes);
+        });
+    }
 }
 exports.solicitudesController = new SolicitudesController;

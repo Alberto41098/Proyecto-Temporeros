@@ -9,6 +9,7 @@ class SolicitudesRoutes {
     }
     config() {
         this.router.post('/', solicitudesController_1.solicitudesController.create);
+        this.router.post('/ofertas', solicitudesController_1.solicitudesController.readofertas);
     }
 }
 const solicitudesRoutes = new SolicitudesRoutes();
