@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../../servicios/ofertas.service';
 import { TrabajadoresService } from '../../servicios/trabajadores.service';
+import { SolicitudesService } from '../../servicios/solicitudes.service';
 @Component({
   selector: 'app-ofertas',
   templateUrl: './ofertas.component.html',
@@ -13,254 +14,13 @@ export class OfertasComponent implements OnInit {
   loading = false;
   nada = false;
   perfil = false;
-  yo = [{
-    id_oferta: 1,
-    titulo: '1',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa jaja',
-    municipio: 'madridejos'
-  },
-  {
-    id_oferta: 1,
-    titulo: '2',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '3',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '4',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '5',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '6',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '7',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '8',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '9',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-    {
-    id_oferta: 1,
-    titulo: '10',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '11',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-    {
-      id_oferta: 1,
-    titulo: '12',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa jaja',
-    municipio: 'madridejos'
-  },
-  {
-    id_oferta: 1,
-    titulo: '13',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '14',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '15',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '16',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '17',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '18',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '19',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '20',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-    {
-    id_oferta: 1,
-    titulo: '21',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    },
-  {
-    id_oferta: 1,
-    titulo: '22',
-    fecha_inicio: '2020-10-10',
-    vacantes: 1000,
-    municipio_id: 6842,
-    recogida_id: 1,
-    empresa_id: 1,
-    empresa: 'empresa lol',
-    municipio: 'Madridejos'
-    }
-  ];
+  existeInscripcion = false;
   mostrar: Array<any>;
   private finishPage = 15;
   private actualPage: number;
   constructor(private ofertaService: OfertasService,
-              private trabajadoresService: TrabajadoresService) {
+              private trabajadoresService: TrabajadoresService,
+              private solicitudService: SolicitudesService) {
     this.actualPage = 1;
     this.mostrar = [];
   }
@@ -300,5 +60,16 @@ export class OfertasComponent implements OnInit {
         this.mostrar.push(this.ofertas[this.control + i]);
       }
   }
-
+  inscribirse(idoferta: number) {
+    this.solicitudService.insertSolicitud({ trabajador_id: 9, oferta_id: idoferta }).subscribe(
+      (res) => {
+        if (!res.succ) {
+          this.existeInscripcion = true;
+          setTimeout(() => {
+            this.existeInscripcion = false;
+          }, 3000);
+        }
+      }
+    );
+  }
 }
