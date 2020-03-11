@@ -70,6 +70,12 @@ class EmpresasController {
             res.json(empresa);
         });
     }
+    readmasofertas(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const empresa = yield database_1.default.query('SELECT empresas.nombre,count(id_oferta) NumeroOferta FROM empresas left join ofertas on  empresas.id_empresa = ofertas.empresa_id group by empresas.id_empresa order by count(id_oferta) desc limit 8');
+            res.json(empresa);
+        });
+    }
     readtoken(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { token } = req.body;

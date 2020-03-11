@@ -41,6 +41,10 @@ class EmpresasController {
         const empresa = await pool.query('SELECT email FROM empresas WHERE email = ?', [email]);
         res.json(empresa)
     }
+    public async readmasofertas(req: Request, res: Response) {
+        const empresa = await pool.query('SELECT empresas.nombre,count(id_oferta) NumeroOferta FROM empresas left join ofertas on  empresas.id_empresa = ofertas.empresa_id group by empresas.id_empresa order by count(id_oferta) desc limit 8');
+        res.json(empresa)
+    }
     public async readtoken(req: Request, res: Response) {
         const { token } = req.body;
         const empresa = await pool.query('SELECT empresas.id_empresa, empresas.cifnif, empresas.nombre, empresas.email, empresas.municipios_id, municipios.municipio FROM empresas, municipios WHERE user_session_token = ? and municipios.id = empresas.municipios_id', [token]);

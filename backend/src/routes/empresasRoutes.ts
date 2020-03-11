@@ -16,6 +16,7 @@ class EmpresasRoutes {
         this.router.get('/email/:email', empresasController.reademail);
         this.router.get('/NIF/:nif', empresasController.readnif);
         this.router.post('/empresa', empresasController.readtoken);
+        this.router.get('/ofertas',empresasController.readmasofertas);
     }
 }
 const empresasRoutes = new EmpresasRoutes();
