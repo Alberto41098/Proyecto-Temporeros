@@ -1,19 +1,55 @@
-.todo{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-top: 40px;
+.todo {
+  height: 100%;
+  width: 100%;
+  padding-top: 40px;
 }
-.listado{
-    width: 65%;
-}
-.datosuser {
-    padding-left: 10px;
-    padding-top: 10px;
-    min-width: 400px;
-}
-.usuario {
-    width: 100%;
+.listado {
+  width: 65%;
 }
 
+.datosuser {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.usuario {
+  width: 100%;
+}
+
+@media (min-width: 865px) {
+  .todo {
+    display: flex;
+    justify-content: center;
+  }
+  .datosuser {
+    min-width: 400px;
+  }
+}
+
+@media (max-width: 864px) {
+  .todo {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      grid-template-areas: "arr""aba";
+  }
+  .listado{
+      grid-area: aba;
+  }
+  .datosuser{
+      grid-area: arr;
+      display: flex;
+      justify-content: center;
+  }
+  .usuario{
+      width: 85%;
+  }
+  .listado{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
+  .listado-dentro{
+    width: 95%;
+  }
+}

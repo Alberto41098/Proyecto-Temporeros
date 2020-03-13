@@ -69,5 +69,9 @@ class TabajadoresController {
             });
         }
     }
+    public async getIdFromToken(req: Request, res: Response) {
+        const id = await pool.query('SELECT id_trabajador FROM trabajadores where user_session_token = ?', [req.body.token]);
+        res.json(id);
+    }
 }
 export const trabajadoresController = new TabajadoresController;

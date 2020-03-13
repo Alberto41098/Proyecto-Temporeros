@@ -40,19 +40,19 @@ class EmpresasController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE empresas SET ? WHERE id = ?', [id]);
+            yield database_1.default.query('UPDATE empresas SET ? WHERE id_empresa = ?', [id]);
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM empresas WHERE id = ?', [id]);
+            yield database_1.default.query('DELETE FROM empresas WHERE id_empresa = ?', [id]);
         });
     }
     readone(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const empresa = yield database_1.default.query('SELECT * FROM empresas WHERE id = ?', [id]);
+            const empresa = yield database_1.default.query('SELECT * FROM empresas WHERE id_empresa = ?', [id]);
             res.json(empresa);
         });
     }
@@ -72,10 +72,13 @@ class EmpresasController {
     }
     readmasofertas(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const empresa = yield database_1.default.query('SELECT empresas.nombre,count(id_oferta) NumeroOferta FROM empresas left join ofertas on  empresas.id_empresa = ofertas.empresa_id group by empresas.id_empresa order by count(id_oferta) desc limit 8');
-            res.json(empresa);
+            const empresas = yield database_1.default.query('SELECT empresas.nombre, count(id_oferta) NumeroOferta FROM empresas left join ofertas on empresas.id_empresa = ofertas.empresa_id group by empresas.id_empresa order by count(id_oferta) desc limit 3');
+            res.json(empresas);
         });
     }
+    // public async a(req:Request, res:Response) {
+    //     res.json({a: 'a'})
+    // }
     readtoken(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { token } = req.body;

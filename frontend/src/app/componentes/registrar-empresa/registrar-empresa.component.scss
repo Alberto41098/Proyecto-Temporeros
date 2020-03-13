@@ -66,3 +66,11 @@ option {
     height: 24px;
   }
 }
+@media (max-width: 500px) {
+  .form{
+    height: 100%;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+  }
+}

@@ -24,7 +24,7 @@ export class EmpresasService {
       return this.http.post('http://localhost:3300/empresas/empresa', token);
   }
   getTopEmpresas() {
-    return this.http.get('http://localhost:3300/empresas/ofertas');
+    return this.http.post('http://localhost:3300/empresas/top', null);
   }
     ifLogin(): boolean {
     return !!localStorage.getItem('tkn-emp');

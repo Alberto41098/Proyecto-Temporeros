@@ -1,22 +1,48 @@
 <div class="todo">
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div id="carrusel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <div class="carousel-inner">
       <div class="carousel-item item">
-        <app-top-empresas></app-top-empresas>
+        <div class="empresas">
+          <app-top-empresas></app-top-empresas>
+        </div>
       </div>
       <div class="carousel-item item active">
-        <!-- <img class="d-block w-100" src="..." alt="Second slide"> --> 
-        <app-logo-xl-temporeros></app-logo-xl-temporeros>
+        <div class="logo">
+          <div class="texto">
+            <div class="titulo">
+              Temporeros
+            </div>
+            <div class="parrafos">
+              <div class="parrafo">
+                Crea oportunidades de trabajo, date a conocer.
+              </div>
+              <div class="parrafo text-right">
+                Busca ofertas en toda España de la recogida que desees.
+              </div>
+              <div class="parrafo">
+                Pongámolo fácil para todos.
+              </div>
+            </div>
+          </div>
+          <div class="img">
+            <app-logo-xl-temporeros></app-logo-xl-temporeros>
+          </div>
+        </div>
       </div>
       <div class="carousel-item item ofertas">
-        <app-ofertas></app-ofertas>
+        <div class="titulo text-white">
+          Últimas ofertas
+        </div>
+        <div class="listado">
+          <app-ofertas></app-ofertas>
+        </div>
       </div>
     </div>
-    <a class="carousel-control-prev control" href="#carouselExampleControls" role="button" data-slide="prev">
+    <a class="carousel-control-prev control" href="#carrusel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next control" href="#carouselExampleControls" role="button" data-slide="next">
+    <a class="carousel-control-next control" href="#carrusel" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>

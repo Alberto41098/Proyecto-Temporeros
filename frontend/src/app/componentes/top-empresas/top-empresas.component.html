@@ -1,0 +1,22 @@
+<div class="todo">
+    <div class="titulo">
+        Empresarios líderes
+    </div>
+    <div class="empresas d-flex flex-row">
+        <div class="empresa" *ngFor="let emp of empresas">
+          <div class="empresa-item">
+            <div class="header d-flex justify-content-center">
+              <app-img-empresa></app-img-empresa>
+            </div>
+            <div class="main d-flex flex-column">
+              <div class="campos text-center">
+                {{emp.nombre}}
+              </div>
+              <div class="campos text-center">
+                <span class="ofertas">{{emp.NumeroOferta}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

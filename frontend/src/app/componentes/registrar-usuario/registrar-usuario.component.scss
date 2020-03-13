@@ -66,3 +66,17 @@ option {
     height: 24px;
   }
 }
+@media (max-width: 633px) {
+.paramatro-sel {
+  min-width: 270px !important;
+}
+
+option {
+  max-width: 270px !important;
+}
+}
+@media (max-width: 450px) {
+  .form{
+    border-radius: 0;
+  }
+}

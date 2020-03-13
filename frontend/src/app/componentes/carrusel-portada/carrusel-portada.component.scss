@@ -19,10 +19,57 @@
 
 .item {
   padding: 10px;
+  height: 100%;
   animation: aparecer .3s ease-in-out;
 }
 
 .ofertas {
   overflow: auto;
-//   height: 500px;
+  background: #f8b26a;
+}
+
+.logo{
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "izq der";
+  height: 480px;
+}
+.texto {
+  grid-area: izq;
+  padding: 10px;
+  padding-right: 20px;
+}
+.titulo{
+  font-size: 2.4em;
+  font-weight: bold;
+  padding: 20px 0px 10px 30px;
+  
+  border-bottom: 3px solid #f1f1f1;
+   
+}
+.img {
+  grid-area: der;
+}
+.parrafos{
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.parrafo{
+  width: 100%;
+  font-size: 1.6em;
+  font-weight: bold;
+  border-bottom: 1px double #f8b26a;
+
+}
+.listado{
+  padding-top: 10px;
+}
+.empresas{
+  height: 100%;
+}
+.carousel-inner{
+  height: 100% !important;
 }

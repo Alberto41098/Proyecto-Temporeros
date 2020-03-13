@@ -104,5 +104,11 @@ class TabajadoresController {
             }
         });
     }
+    getIdFromToken(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = yield database_1.default.query('SELECT id_trabajador FROM trabajadores where user_session_token = ?', [req.body.token]);
+            res.json(id);
+        });
+    }
 }
 exports.trabajadoresController = new TabajadoresController;

@@ -16,6 +16,7 @@ export class OfertasComponent implements OnInit {
   perfil = false;
   existeInscripcion = false;
   mostrar: Array<any>;
+  classError = 'error';
   private finishPage = 15;
   private actualPage: number;
   constructor(private ofertaService: OfertasService,
@@ -27,6 +28,9 @@ export class OfertasComponent implements OnInit {
 
   ngOnInit() {
     this.init = true;
+    if (this.trabajadoresService.ifLogin()) {
+      this.setidToken();
+    }
     setTimeout(() => {
       this.perfil = this.ofertaService.ifPerfil();
       this.ofertas = this.ofertaService.getOfertas();
@@ -59,13 +63,27 @@ export class OfertasComponent implements OnInit {
         this.mostrar.push(this.ofertas[this.control + i]);
       }
   }
+  getClassError() {
+    return this.classError;
+  }
+  setidToken() {
+    this.trabajadoresService.getUsuarioIdFromToken({ token: this.trabajadoresService.getToken() }).subscribe(
+      (res: any) => {
+        this.trabajadoresService.setId(res[0].id_trabajador);
+      }
+    );
+  }
   inscribirse(idoferta: number) {
-    this.solicitudService.insertSolicitud({ trabajador_id: 9, oferta_id: idoferta }).subscribe(
+    this.solicitudService.insertSolicitud({ trabajador_id: this.trabajadoresService.getId(), oferta_id: idoferta }).subscribe(
       (res) => {
         if (!res.succ) {
           this.existeInscripcion = true;
           setTimeout(() => {
-            this.existeInscripcion = false;
+            this.classError = 'error desa';
+            setTimeout(() => {
+              this.existeInscripcion = false;
+              this.classError = 'error';
+            }, 300);
           }, 3000);
         }
       }

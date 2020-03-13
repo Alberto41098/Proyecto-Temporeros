@@ -8,10 +8,12 @@ import { EmpresasService } from '../../servicios/empresas.service';
 export class TopEmpresasComponent implements OnInit {
 
   constructor(private empresasService: EmpresasService) { }
-
+  empresas: any;
   ngOnInit() {
-    this.empresasService.getTopEmpresas().subscribe(
-      (res) => console.log(res)
+      this.empresasService.getTopEmpresas().subscribe(
+        (res) => {
+          this.empresas = res;
+      }
     );
   }
 

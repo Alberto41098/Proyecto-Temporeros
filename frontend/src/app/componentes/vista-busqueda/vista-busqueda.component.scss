@@ -8,3 +8,8 @@
 .listado{
   width: 65%;
 }
+@media (max-width: 650px) {
+  .listado{
+    width: 90%;
+  }
+}
