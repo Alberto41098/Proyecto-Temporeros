@@ -1,0 +1,26 @@
+Página Portada
+        - Barra de búsqueda
+                Si se pulsa sobre el botón de buscar si rellenar ningun campo, se muestran todas las ofertas.
+                Si se marca se selecciona una provincia, pero no se rellena el titulo, busca todas las ofertas de esa provincia.
+                Si se rellena el texto, pero no la provincia, busca ofertas con un titulo parecido, en cualquier parte de españa.
+                Si se rellena las dos opciones, como es de esperar, busca por titulo y provincia.
+        - Parte inferior
+                Se muestra un carrusel con el logotipo, las utlimas 8 ofertas creadas, y el top 3 empresas con mas ofertas.
+Busquedas
+        -Si no se ha iniciado sesion como usuario normal, no se podrá inscribir a las ofertas.
+        -Si si esta iniciada la sesion, podra inscribirse. No se pueden inscribir dos veces en la misma oferta.
+        -Si no encuentra ninguna oferta, muestra un mensaje.
+Login
+        -Empresa
+                Si se inicia sesión con exito se redirige a la pagina de perfil.
+        -Usuario
+                Se redirige a la portada para que pueda empezar con las búsquedas.
+Registrar Empresa y Usuario
+        - Todos los campos son obligatorios, ademas no se puede crear una cuenta si ya existe el email, el dni o el cif/nif en la base de datos.
+Perfil
+        Inaccesible si no se incia sesión antes.
+        -Empresa
+                Se muestran los datos de la empresa, y un listado de las ofertas que se han creado.
+        -Usuario
+                Se muestrna los datos del usuario, y un listado de ofertas a las que se ha inscrito.
+

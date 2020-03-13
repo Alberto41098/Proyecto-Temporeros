@@ -1,0 +1,3 @@
+ejecutar comando npm i en backend y frontend
+En el Frontend hay que instalar el siguiente paquete
+npm install --save ngx-infinite-scroll

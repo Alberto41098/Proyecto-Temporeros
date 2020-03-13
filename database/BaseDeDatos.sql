@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-02-2020 a las 19:18:43
+-- Tiempo de generación: 13-03-2020 a las 05:33:25
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -23,7 +23,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS temporeros;
 USE temporeros;
-
 -- --------------------------------------------------------
 
 --
@@ -72,10 +71,10 @@ CREATE TABLE `empresas` (
   `cifnif` varchar(45) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `email` varchar(150) DEFAULT NULL,
-  `pass` varchar(45) DEFAULT NULL,
+  `pass` varchar(200) DEFAULT NULL,
   `logo` varchar(150) DEFAULT NULL,
   `municipios_id` int(10) UNSIGNED NOT NULL,
-  `user_session_token` int(11) DEFAULT NULL
+  `user_session_token` varchar(400) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -83,9 +82,14 @@ CREATE TABLE `empresas` (
 --
 
 INSERT INTO `empresas` (`id_empresa`, `cifnif`, `nombre`, `email`, `pass`, `logo`, `municipios_id`, `user_session_token`) VALUES
-(1, 'a12312321', 'Empresa de alberto', 'a@gmail.com', '$2a$10$D1RbQElVburIzqYZqa89PeeiqZG4ydHoqcuxaD', NULL, 6852, NULL),
-(2, 'a12312312', 'Jaja', 'alberto@gmail.com', '$2a$10$eE.e/cTHevUY9dltV403bOfIwyTXdHAHWq0bhT', NULL, 6852, NULL),
-(3, 'b12312312', 'pruebafinal', 'alberto@gmail.es', '$2a$10$dqOSCH/p/uKK0IdbRZAyKOawB4f7QV6gQUczp3', NULL, 6852, NULL);
+(21, 'a12312312', 'Alberto Ortega', 'alberto@gmail.com', '$2a$05$.SDeplBRyKXDecewsV.gGOeOsNm83cphBOlQA2BxAl6WipY49cIqq', NULL, 6852, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFsYmVydG9AZ21haWwuY29tIiwiaWF0IjoxNTgzMjY2Njk4LCJleHAiOjE1ODMzNTEyOTh9.yPOMGgqzVNeb7y1zVAwb0WA7xw3wS7c-tGz-aSvKt7Y'),
+(23, 'b12312312', 'ICA SL', 'isabel@gmail.com', '$2a$05$rrkFPG1PVzkhSC9rpei1qOYqsxaSFJ/83gWTQZocIAt5BSFj45FsW', NULL, 6800, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImphamFAZ21haWwuY29tIiwiaWF0IjoxNTgzODY1NDkxLCJleHAiOjE1ODM5NTAwOTF9.2KzhhnksK2VSj-rW4et7PnS12bUG3wfgSY-BV04q4zY'),
+(24, 'm12312312', 'Alberto Ortega SL', 'albertosl@gmail.com', '$2a$05$rrkFPG1PVzkhSC9rpei1qOYqsxaSFJ/83gWTQZocIAt5BSFj45FsW', NULL, 6852, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InhkQGdtYWlsLmNvbSIsImlhdCI6MTU4NDA2NjU4OCwiZXhwIjoxNTg0MTUxMTg4fQ.1hzEsrRy8KpTvhuX8LcQlWuFAWSf7xWCRe5ugj4oXnI'),
+(25, 'm21123113', 'Feinsa SA', 'feinsa@info.com', '$2a$05$FYD1DMWugxE3Et0ZZjLjbODkoqFOfj0q992I8yw7HXaMeRhWXrNSO', NULL, 2120, NULL),
+(26, 'b98234123', 'Felipe Ramirez', 'felipera@gmail.com', '$2a$05$FYD1DMWugxE3Et0ZZjLjbODkoqFOfj0q992I8yw7HXaMeRhWXrNSO', NULL, 2596, NULL),
+(27, 'm33213754', 'Ramiro Torres', 'ratorres@gmail.es', '$2a$05$FYD1DMWugxE3Et0ZZjLjbODkoqFOfj0q992I8yw7HXaMeRhWXrNSO', NULL, 5751, NULL),
+(28, 'h32239845', 'Grupo Guia', 'guia@info.com', '$2a$05$FYD1DMWugxE3Et0ZZjLjbODkoqFOfj0q992I8yw7HXaMeRhWXrNSO', NULL, 5573, NULL),
+(29, 'a93423956', 'Verne SL', 'verne@info.es', '$2a$05$FYD1DMWugxE3Et0ZZjLjbODkoqFOfj0q992I8yw7HXaMeRhWXrNSO', NULL, 2065, NULL);
 
 -- --------------------------------------------------------
 
@@ -8241,13 +8245,27 @@ INSERT INTO `municipios` (`municipio`, `id`, `slug`, `latitud`, `longitud`, `pro
 
 CREATE TABLE `ofertas` (
   `id_oferta` int(10) UNSIGNED NOT NULL,
-  `fecha_inicio` datetime DEFAULT NULL,
+  `titulo` varchar(200) NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha_inicio` date DEFAULT NULL,
   `activo` tinyint(4) DEFAULT NULL,
   `vacantes` int(11) DEFAULT NULL,
   `municipio_id` int(10) UNSIGNED NOT NULL,
   `recogida_id` int(10) UNSIGNED NOT NULL,
   `empresa_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ofertas`
+--
+
+INSERT INTO `ofertas` (`id_oferta`, `titulo`, `descripcion`, `fecha_inicio`, `activo`, `vacantes`, `municipio_id`, `recogida_id`, `empresa_id`) VALUES
+(100, 'Vendimia', 'Empieza la recogida de uva en madridejos y se necesita rellenar cuadrilla de 10, para mas información inscríbete y nos ponemos en contacto', '2020-07-16', 1, 10, 6852, 1, 21),
+(101, 'Poda de almendros', 'Se requiere operario con la reglamentación adecuada y con experiencia para poda del almendros en Madridejos', '2020-08-21', 1, 1, 6852, 15, 23),
+(102, 'Recogidad de rosas', 'Recogida de rosas, no necesaria experiencia mínima, solo ganas, y compromiso para 1 mes, como mínimo. Para mas info, ponerse en contacto.', '2020-08-01', 1, 15, 3452, 12, 27),
+(103, 'Monda de azafran', 'Se requieren de personas con experiencia, para monda de azafran, se paga a destajo ademas de en especie.', '2020-10-10', 1, 10, 6842, 19, 24),
+(104, 'cuadrilla para vendimiar', 'Se buscan 15 para hacer cuadrilla para vendimiar, para 4 semanas. Solo gente seria, bien pagado, para mas información ponerse en contacto', '2020-08-30', 1, 15, 6632, 1, 26),
+(105, 'Se busca tractor, arar olivas', 'Busco alquilar tractor para arar olivas, debido a que el mio se ha averiado. Pago 120€ dia mas gasto de gasoil, urge', '2020-07-01', 1, 1, 5323, 14, 27);
 
 -- --------------------------------------------------------
 
@@ -8328,9 +8346,33 @@ INSERT INTO `provincias` (`id`, `slug`, `provincia`, `comunidad_id`) VALUES
 
 CREATE TABLE `recogidas` (
   `id_recogida` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL,
-  `temporada_id` int(11) NOT NULL
+  `nombre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `recogidas`
+--
+
+INSERT INTO `recogidas` (`id_recogida`, `nombre`) VALUES
+(1, 'Vendimia'),
+(2, 'Tomate'),
+(3, 'Pimiento'),
+(4, 'Melón'),
+(5, 'Fresas'),
+(6, 'Judía verde'),
+(7, 'Pepino'),
+(8, 'Sandía'),
+(9, 'Calabacín'),
+(10, 'Berenjena'),
+(11, 'Lechuga'),
+(12, 'Rosa'),
+(13, 'Clavel'),
+(14, 'Aceituna'),
+(15, 'Almendra'),
+(16, 'Pistachos'),
+(17, 'Arroz'),
+(18, 'Cereal'),
+(19, 'Azafrán');
 
 -- --------------------------------------------------------
 
@@ -8340,22 +8382,23 @@ CREATE TABLE `recogidas` (
 
 CREATE TABLE `solicitudes` (
   `id_solicitud` int(11) NOT NULL,
-  `fecha` datetime DEFAULT NULL,
-  `aceptada` tinyint(4) DEFAULT NULL,
+  `fecha` datetime DEFAULT current_timestamp(),
+  `aceptada` tinyint(4) DEFAULT 0,
   `trabajador_id` int(11) NOT NULL,
   `oferta_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `temporadas`
+-- Volcado de datos para la tabla `solicitudes`
 --
 
-CREATE TABLE `temporadas` (
-  `id_tempora` int(11) NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `solicitudes` (`id_solicitud`, `fecha`, `aceptada`, `trabajador_id`, `oferta_id`) VALUES
+(76, '2020-03-10 21:25:04', 0, 9, 100),
+(79, '2020-03-11 16:38:51', 0, 9, 101),
+(80, '2020-03-11 16:40:13', 0, 9, 102),
+(85, '2020-03-12 20:38:20', 0, 17, 100),
+(87, '2020-03-12 21:04:10', 0, 17, 101),
+(88, '2020-03-13 05:11:55', 0, 9, 103);
 
 -- --------------------------------------------------------
 
@@ -8381,10 +8424,12 @@ CREATE TABLE `trabajadores` (
 --
 
 INSERT INTO `trabajadores` (`id_trabajador`, `DNI`, `nombre`, `apellidos`, `email`, `pass`, `telefono`, `curriculum`, `municipio_id`, `user_session_token`) VALUES
-(9, '12312312A', 'Alberto', 'Ortega Avila', 'alberto@gmail.com', '$2a$10$IsD/SdRimIZru/6GmMjAyuDGzk24lms/31sBftdydPv4VIbKVs4xq', 123123123, NULL, 6852, NULL),
-(14, '12312312B', 'prueba', 'jaja', 'alberto@yahoo.com', '$2a$10$tTOV2uvO209SlL7xQITsZuc6AD0hpPZD6S5T3mH7KPcp8n2TFjwLy', 123123123, NULL, 4973, NULL),
+(9, '12312312A', 'Alberto', 'Ortega Avila', 'alberto@gmail.com', '$2a$10$IsD/SdRimIZru/6GmMjAyuDGzk24lms/31sBftdydPv4VIbKVs4xq', 123123123, NULL, 6852, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFsYmVydG9AZ21haWwuY29tIiwiaWF0IjoxNTgzMjYxMzY1LCJleHAiOjE1ODMzNDU5NjV9.Rx1lsqhCL-H1C2u2ZPRaC3_9IjRzCtdEO59uYy2879U'),
+(14, '12312312B', 'prueba', 'jaja', 'alberto@yahoo.com', '$2a$10$tTOV2uvO209SlL7xQITsZuc6AD0hpPZD6S5T3mH7KPcp8n2TFjwLy', 123123123, NULL, 4973, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFsYmVydG9AeWFob28uY29tIiwiaWF0IjoxNTgzMjY2NTg3LCJleHAiOjE1ODMzNTExODd9.EhU_kecZd4CgsiJj1euAVYea2-LVTEhPPjnQ34_mH4A'),
 (15, '11111111A', 'a', 'a', 'a@gmail.com', '$2a$10$b/zKP8a668kungPFAAegpuujUj028qZ4zm8l2cS5gHk5qVSc2Phv.', 111111111, NULL, 6852, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFAZ21haWwuY29tIiwiaWF0IjoxNTgyODI1MzgyLCJleHAiOjE1ODI5MDk5ODJ9.pog7W01lY57LqgVvWAwSaD-208SOMpcFBJtc_yWwBBg'),
-(16, '12312312N', 'Isabel', 'Caballero', 'isabel@gmail.com', '$2a$10$qhTWPbzLnxQBWINaTjGFGuH0pBSYZpE/gFa5IYrfy2fYvTheKBxkm', 123123123, NULL, 6800, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImlzYWJlbEBnbWFpbC5jb20iLCJpYXQiOjE1ODI4ODczMjYsImV4cCI6MTU4Mjk3MTkyNn0.WPwbgNnG4in0Vgifp2xATI9U4edd5ckFp0IoaOXfLfU');
+(16, '12312312N', 'Isabel', 'Caballero', 'isabel@gmail.com', '$2a$10$qhTWPbzLnxQBWINaTjGFGuH0pBSYZpE/gFa5IYrfy2fYvTheKBxkm', 123123123, NULL, 6800, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImlzYWJlbEBnbWFpbC5jb20iLCJpYXQiOjE1ODI4ODczMjYsImV4cCI6MTU4Mjk3MTkyNn0.WPwbgNnG4in0Vgifp2xATI9U4edd5ckFp0IoaOXfLfU'),
+(17, '12312312P', 'prueba', 'kaka', 'prueba@gmail.com', '$2a$10$Fi/m4pzZtJ0OJF0yB7KXl.uGkhwF7XDfFtyCZ1l/pF3wpD50yXnpa', 123123123, NULL, 6874, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYUBnbWFpbC5jb20iLCJpYXQiOjE1ODM3OTIyODMsImV4cCI6MTU4Mzg3Njg4M30.lKcDcTMtCZpOSPdyA7mGd5XLW0aB7P3zmqUmJLE5d_M'),
+(18, '70112233A', 'Perfil', 'De Prueba', 'prueba@hotmai.com', '$2a$10$4Z0kOjp6DyylpaNf9766nO0CVP3f8l0exGHPYS2NVZIuaxVfNu5Rm', 612121212, NULL, 1947, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYUBob3RtYWkuY29tIiwiaWF0IjoxNTg0MDM4NDY4LCJleHAiOjE1ODQxMjMwNjh9.DClAdAml6akQjCM-PHF4W7z65Jn6MxQa1DyolqF6WsU');
 
 --
 -- Índices para tablas volcadas
@@ -8436,9 +8481,8 @@ ALTER TABLE `provincias`
 -- Indices de la tabla `recogidas`
 --
 ALTER TABLE `recogidas`
-  ADD PRIMARY KEY (`id_recogida`,`temporada_id`),
-  ADD UNIQUE KEY `idrecogidas_UNIQUE` (`id_recogida`),
-  ADD KEY `fk_recogidas_temporadas1_idx` (`temporada_id`);
+  ADD PRIMARY KEY (`id_recogida`) USING BTREE,
+  ADD UNIQUE KEY `idrecogidas_UNIQUE` (`id_recogida`);
 
 --
 -- Indices de la tabla `solicitudes`
@@ -8448,13 +8492,6 @@ ALTER TABLE `solicitudes`
   ADD UNIQUE KEY `id_solicitud_UNIQUE` (`id_solicitud`),
   ADD KEY `fk_solicitudes_trabajadores1_idx` (`trabajador_id`),
   ADD KEY `fk_solicitudes_ofertas1_idx` (`oferta_id`);
-
---
--- Indices de la tabla `temporadas`
---
-ALTER TABLE `temporadas`
-  ADD PRIMARY KEY (`id_tempora`),
-  ADD UNIQUE KEY `id_tempora_UNIQUE` (`id_tempora`);
 
 --
 -- Indices de la tabla `trabajadores`
@@ -8473,7 +8510,7 @@ ALTER TABLE `trabajadores`
 -- AUTO_INCREMENT de la tabla `empresas`
 --
 ALTER TABLE `empresas`
-  MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `municipios`
@@ -8485,7 +8522,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
-  MODIFY `id_oferta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_oferta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT de la tabla `provincias`
@@ -8497,25 +8534,19 @@ ALTER TABLE `provincias`
 -- AUTO_INCREMENT de la tabla `recogidas`
 --
 ALTER TABLE `recogidas`
-  MODIFY `id_recogida` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_recogida` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `temporadas`
---
-ALTER TABLE `temporadas`
-  MODIFY `id_tempora` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT de la tabla `trabajadores`
 --
 ALTER TABLE `trabajadores`
-  MODIFY `id_trabajador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_trabajador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas
@@ -8546,12 +8577,6 @@ ALTER TABLE `ofertas`
 --
 ALTER TABLE `provincias`
   ADD CONSTRAINT `fk_provincias_comunidades1` FOREIGN KEY (`comunidad_id`) REFERENCES `comunidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `recogidas`
---
-ALTER TABLE `recogidas`
-  ADD CONSTRAINT `fk_recogidas_temporadas1` FOREIGN KEY (`temporada_id`) REFERENCES `temporadas` (`id_tempora`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `solicitudes`
