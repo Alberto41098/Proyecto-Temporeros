@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
 nav {
   box-shadow: 0 0.1px 2.2px rgba(0, 0, 0, 0.053),
     0 0.3px 5.3px rgba(0, 0, 0, 0.077),
@@ -41,4 +43,13 @@ img{
   font-family: 'Lobster',
   cursive;
   color: #e15b64;
+}
+.icon{
+  height: 18px;
+}
+.nav-link {
+  display: flex !important;
+  align-items: center !important;
+    font-family: 'Ubuntu',
+    sans-serif !important;
 }

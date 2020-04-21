@@ -25,6 +25,7 @@ import { CarruselPortadaComponent } from './componentes/carrusel-portada/carruse
 import { NoHayNadaComponent } from './componentes/no-hay-nada/no-hay-nada.component';
 import { LogoXlTemporerosComponent } from './componentes/logo-xl-temporeros/logo-xl-temporeros.component';
 import { TopEmpresasComponent } from './componentes/top-empresas/top-empresas.component';
+import { CrearOfertaComponent } from './componentes/crear-oferta/crear-oferta.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { TopEmpresasComponent } from './componentes/top-empresas/top-empresas.co
     NoHayNadaComponent,
     LogoXlTemporerosComponent,
     TopEmpresasComponent,
+    CrearOfertaComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['/portada']"><img src="../../../assets/icono.ico"> <span
+    <a class="navbar-brand" [routerLink]="['/portada']" title="Temporeros"><img src="../../../assets/icono.ico" draggable="false"> <span
         class="nombrepag">Temporeros</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,10 +18,10 @@
       <ng-container *ngIf="(trabajadoresService.ifLogin() || empresasService.ifLogin()) else logedOut">
         <ul class="navbar-nav navopciones">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/perfil']">Perfil</a>
+            <a class="nav-link" [routerLink]="['/perfil']"><img src="../../../assets/usuario2.svg" alt="" class="icon">Perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/portada']" (click)="logOut()">Cerrar sesión</a>
+            <a class="nav-link" [routerLink]="['/portada']" (click)="logOut()"><img src="../../../assets/cerrar-sesion.svg" alt="" class="icon">Cerrar sesión</a>
           </li>
         </ul>
       </ng-container>

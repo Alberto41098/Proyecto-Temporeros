@@ -43,3 +43,48 @@
   padding: 10px;
   font-weight: bold;
 }
+.footer{
+  padding: 10px;
+  border-top: 1px solid #e1e1e1;
+  button{
+    width: 100%;
+  }
+}
+.crear{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  animation: aparecer .2s ease-in-out;
+  z-index: 100;
+  background-color: rgba($color: #000000, $alpha: 0.20);
+  overflow: auto;
+}
+.crear-app {
+  width: 50%;
+  z-index: 101;
+}
+app-crear-oferta{
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 766px) {
+  .crear {
+    align-items: unset;
+  }
+  .crear-app {
+    width: 100vw !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .crear-app {
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+}

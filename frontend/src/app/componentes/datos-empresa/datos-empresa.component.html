@@ -20,5 +20,13 @@
         {{empresa.municipio}}
       </div>
     </div>
+    <div class="addoferta centrado footer">
+      <button class=" btn btn-primary" (click)="ofertasServicio.setCrear(true)">Crear Oferta</button>
+    </div>
+  </div>
+</div>
+<div class="centrado crear" *ngIf="ofertasServicio.getCrear()">
+  <div class="crear-app">
+    <app-crear-oferta></app-crear-oferta>
   </div>
 </div>

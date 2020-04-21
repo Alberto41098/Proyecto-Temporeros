@@ -1,0 +1,82 @@
+<div class="todo">
+  <div class="div-form">
+    <div class="card-header header">
+      <h3 class="mb-0 h2 text-right">¡Crea una oferta!</h3>
+    </div>
+    <form [formGroup]="formOferta" (submit)="submit()">
+      <div class="form-row fila">
+        <div class="form-group col-md-12">
+          <label for="titulo" class="h5">Titulo de la oferta</label>
+          <footer class="blockquote-footer smalltext">Por este título se podrá encontrar tu oferta en el buscador, use palabras clave como <cite>vendimia, uva, aceituna...</cite></footer>
+          <input formControlName="titulo" type="text" class="form-control parametro" id="form-titulo"
+            aria-describedby="titulo" placeholder="" autocomplete="off">
+            <div class="form-text text-muted">
+              <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="error">
+                <small *ngIf="titulo.errors.required">El título es obligatorio.</small>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="form-row fila">
+        <div class="form-group col-md-12">
+          <label for="desc" class="h5">Descripción de la oferta</label>
+          <footer class="blockquote-footer smalltext">Exprese detallamente que busca y que ofrece. Por ejemplo, salario, duración de jornada, tlf. de contacto, etc.</footer>
+          <textarea formControlName="desc" class="form-control parametro" id="form-desc" rows="5"></textarea>
+          <div class="form-text text-muted">
+            <div *ngIf="desc.invalid && (desc.dirty || desc.touched)" class="error">
+              <small *ngIf="desc.errors.required">La descripción es obligatorio.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <label for="donde" class="fila h5">Indique donde está la recogida</label>
+      <footer class="blockquote-footer smalltext">¿Dónde se realizará la labor?</footer>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="prov">Provincia</label>
+          <select formControlName="provincia_id" class="custom-select" id="provincia"
+            (change)="changeMunicipio()">
+            <option selected value="0">Seleccione Provincia</option>
+            <option *ngFor="let prov of provincias" value="{{prov.id}}">
+              {{prov.provincia}}</option>
+          </select>
+          </div>
+        <div class="form-group col-md-6">
+          <label for="mun">Municipio</label>
+          <select formControlName="municipio_id" class="custom-select" id="municipio">
+            <option selected value="0">Seleccione Municipio</option>
+            <option *ngFor="let muni of municipios" value="{{muni.id}}">
+              {{muni.municipio}}</option>
+          </select>
+        </div>
+      </div>
+        <div class="form-row fila">
+            <div class="form-group col-md-6">
+                <label for="plazas" class="h5">Vacantes</label>
+                <footer class="blockquote-footer smalltext">¿Cuánta gente necesitas?</footer>
+                <input type="number" formControlName="vacantes" class="form-control parametro">
+                <div *ngIf="vacantes.invalid && (vacantes.dirty || vacantes.touched)" class="error">
+                  <small *ngIf="vacantes.errors.required">El número de vacantes es obligatorio.</small>
+                  <small *ngIf="vacantes.errors.pattern">El numero de vacantes mínimo es 1 y máximo 1000</small>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="plazas" class="h5">Fecha de inicio</label>
+                <footer class="blockquote-footer smalltext">¿Cuándo empezamos?</footer>
+                <input type="date" formControlName="fecha_inicio" class="form-control parametro">
+                <div class="form-text text-muted">
+                  <div *ngIf="fecha_inicio.invalid && (fecha_inicio.dirty || fecha_inicio.touched)" class="error">
+                    <small *ngIf="fecha_inicio.errors.required">La fecha de inicio es obligatoria.</small>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row fila justify-content-between">
+            <button class="btn btn-danger" (click)="ofertasService.setCrear(false)">Cancelar</button>
+            <button class="btn btn-success"
+              [disabled]="formOferta.invalid">Crear
+              Oferta</button>
+        </div>
+    </form>
+  </div>
+</div>

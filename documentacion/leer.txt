@@ -1,0 +1,3 @@
+Con la siguiente docuementación he intentado explicar al máximo los pasos que hemos seguido en clase y en casa.
+Puesto que no está terminada, y esta ligeramente un poco mas avanzada de lo que se nos propuso como mínimo antes del confinamiento,
+esta documentación explica eso, la aplicacion que tenemos hecha hasta ahora.
